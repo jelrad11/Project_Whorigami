@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Dev_blue
+  m_Name: Dev_green
   m_Shader: {fileID: -6465566751694194690, guid: a5b6db71b2191c3419a1306b2eee665c, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -49,6 +49,6 @@ Material:
     - Vector1_ab8d46f8730d44c1a67b665b11f07a3a: 0.2
     - Vector1_daa70b40d2a348aaad36323a8641affa: 0.125
     m_Colors:
-    - Color_38fb8487502d474ab990b1f187cb89b1: {r: 1.2660772, g: 1.6925573, b: 1.8769815, a: 0}
+    - Color_38fb8487502d474ab990b1f187cb89b1: {r: 0.68848556, g: 1.8475816, b: 0.7678155, a: 0}
     - Vector2_443f49ddc1df47e3abdc989b963d187b: {r: 58.83, g: -32.14, b: 10, a: -9.56}
   m_BuildTextureStacks: []
