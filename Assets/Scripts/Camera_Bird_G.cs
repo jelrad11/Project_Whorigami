@@ -9,6 +9,7 @@ public class Camera_Bird_G : MonoBehaviour
 
     public float smoothSpeed = 10f;
     public Vector3 baseOffset = new Vector3 (0, 0.5f, 0);
+    
     public float offset0;
     public float offset1;
     public Vector3 offset2;
