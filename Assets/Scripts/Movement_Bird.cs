@@ -17,7 +17,16 @@ public class Movement_Bird : MonoBehaviour
     }
 
     public void flyingMovement(){
-        
+
+        Vector3 dir = bird.transform.rotation.eulerAngles;
+
+        float angle = dir.x;
+
+        if (angle > 180f) angle = angle - 360f;
+
+        Debug.Log(angle);
+
+
         Vector3 movVector = new Vector3();
         Vector3 forwardMovement = gameObject.transform.forward * movementSpeed * Time.deltaTime;
         Vector3 rotVector = new Vector3();
