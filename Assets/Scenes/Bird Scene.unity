@@ -245,10 +245,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 675223855}
   smoothSpeed: 1
+  baseOffset: {x: 0, y: 0.5, z: 0}
   offset0: 0
   offset1: 0
   offset2: {x: 0, y: 0, z: 0}
-  bird: {fileID: 793537339}
+  birdparent: {fileID: 793537339}
 --- !u!1 &587167523
 GameObject:
   m_ObjectHideFlags: 0
@@ -386,6 +387,7 @@ MonoBehaviour:
   angle: 0
   grav: -2
   basicFlap: 0.1
+  boostMultiplier: 3
   bird: {fileID: 675223852}
 --- !u!4 &1575399019 stripped
 Transform:
