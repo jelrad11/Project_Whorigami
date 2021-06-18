@@ -8,17 +8,17 @@ public class Camera_Bird_G : MonoBehaviour
     public Transform target;
 
     public float smoothSpeed = 10f;
-    public Vector3 baseOffset = new Vector3 (0, 0.5f, 0);
+    public Vector3 baseOffset = new Vector3 (0, 0.5f, 0); // raises camera above bird by default
     
-    public float offset0;
-    public float offset1;
-    public Vector3 offset2;
-    public GameObject bird;
+    public float offset0; // brings camera behind the bird
+    public float offset1; // makes the camera look in the direction the player is turning
+    public Vector3 offset2; // adjusts distance depending on bird angle
+    public GameObject birdparent;
     private Movement_Bird_G birdscript;
 
     private void Start()
     {
-        birdscript = bird.GetComponent<Movement_Bird_G>();
+        birdscript = birdparent.GetComponent<Movement_Bird_G>();
     }
 
     void LateUpdate()
