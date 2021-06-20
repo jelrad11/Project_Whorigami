@@ -77,9 +77,9 @@ public class Movement_Paper : MonoBehaviour
             }
         }
 
-        if(Input.GetKey(KeyCode.Q) || Input.GetKey(KeyCode.E) && !(Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.S))){
+        if(Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D) && !(Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.S))){
             float rotationMod = 1f;
-            if(Input.GetKey(KeyCode.Q)) rotationMod = -1f;
+            if(Input.GetKey(KeyCode.A)) rotationMod = -1f;
 
             if(longSide){
                 rolledUp_Long.transform.Rotate(rotation * rotationMod, Space.World);
@@ -140,7 +140,7 @@ public class Movement_Paper : MonoBehaviour
             }
         }
         else {
-            if(Input.GetKey(KeyCode.T) && (!Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.S) && !Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.W) )){
+            if(Input.GetKey(KeyCode.E) && (!Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.S) && !Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.W) )){
                 flatPaper.SetActive(true);
                 rolledUp_Long.SetActive(false);
                 rolledUp_Short.SetActive(false);
