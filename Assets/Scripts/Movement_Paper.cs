@@ -157,7 +157,8 @@ public class Movement_Paper : MonoBehaviour
                 flatPaper.transform.position = paperPosition;
                 rolledUp_Short.transform.position = paperPosition;
 
-                flatPaper.transform.rotation = new Quaternion(0f, rolledUp_Long.transform.rotation.y, 0f, rolledUp_Long.transform.rotation.w);               
+                Quaternion rot = Quaternion.Euler(0f, rolledUp_Long.transform.rotation.eulerAngles.y, 0f);
+                flatPaper.transform.rotation = new Quaternion(0f, rot.y, 0f, rot.w);               
                 rolledUp_Short.transform.rotation = Quaternion.Euler(0f, rolledUp_Long.transform.rotation.eulerAngles.y, 90f);
                 break;
             case 2:
@@ -166,7 +167,8 @@ public class Movement_Paper : MonoBehaviour
                 flatPaper.transform.position = paperPosition;
 
                 rolledUp_Long.transform.rotation = Quaternion.Euler(90f, rolledUp_Short.transform.rotation.eulerAngles.y, 0f);
-                flatPaper.transform.rotation = new Quaternion(0f, rolledUp_Short.transform.rotation.y, 0f, rolledUp_Short.transform.rotation.w);
+                Quaternion rot2 = Quaternion.Euler(0f, rolledUp_Short.transform.rotation.eulerAngles.y, 0f);
+                flatPaper.transform.rotation = new Quaternion(0f, rot2.y, 0f, rot2.w);                     
                 break;
         }
     }
