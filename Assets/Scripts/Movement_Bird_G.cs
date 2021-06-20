@@ -11,7 +11,7 @@ public class Movement_Bird_G : MonoBehaviour
     public float maxSpeed = 7f;
 
     public float vertMaxRotationSpeed = 50f;
-    private float vertCurrentRotationSpeed = 0f;
+    public float vertCurrentRotationSpeed = 0f; // set this to public so I could read it in the Camera_Kai script - signed Kai
     public float vertRotFriction = 50f;
     public float vertRotationLimit = 60f;
     public float vertRotAcc = 150f;
