@@ -76,8 +76,7 @@ public class Movement_Paper : MonoBehaviour
                 } 
             }
         }
-
-        if(Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D) && !(Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.S))){
+        else if(Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D)){
             float rotationMod = 1f;
             if(Input.GetKey(KeyCode.A)) rotationMod = -1f;
 
