@@ -33,7 +33,7 @@ public class Camera_Kai : MonoBehaviour
         // rotates desiredPosition around target.position to have offsets be relative to the bird position
         // there's two ways to do this in this script, either the line below or the one that has [2] commented above it
         //[1]
-        desiredPosition = Quaternion.Euler(target.eulerAngles) * (desiredPosition - target.position) + target.position;
+        // desiredPosition = Quaternion.Euler(target.eulerAngles) * (desiredPosition - target.position) + target.position;
 
 
 
@@ -45,7 +45,7 @@ public class Camera_Kai : MonoBehaviour
         //[2]
 
         //use either of the lines below, .angle is slightly less aggressive than vericcurrentspeed, when using this disable [1]
-        //transform.RotateAround(target.transform.position, Vector3.right, birdScript.angle * Time.deltaTime * movementLagCoefficient);
+        transform.RotateAround(target.transform.position, Vector3.right, birdScript.angle * Time.deltaTime * movementLagCoefficient);
         //transform.RotateAround(target.transform.position, Vector3.right, birdScript.vertCurrentRotationSpeed * Time.deltaTime * movementLagCoefficient);
 
 
