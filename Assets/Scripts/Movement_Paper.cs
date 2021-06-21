@@ -29,6 +29,12 @@ public class Movement_Paper : MonoBehaviour
         checkVelocity();
 
         transfCooldown -= Time.deltaTime;
+
+        if(Input.GetKey(KeyCode.J)){
+            Debug.Log(flatPaper.transform.right);
+            Debug.Log(flatPaper.transform.forward);
+        }
+        
     }
 
     private void checkVelocity(){
@@ -76,6 +82,9 @@ public class Movement_Paper : MonoBehaviour
         if(Input.GetKey(KeyCode.W)) forwardDir = 1f;
         else if(Input.GetKey(KeyCode.S)) forwardDir = -1f;
 
+        Vector3 r = flatPaper.transform.right;
+        Vector3 rightTransl = new Vector3(-r.z, r.y, r.x);
+        
         if(!flat){
             if(longSide){
                 if(forwardDir != 0f) rolledUp_Long.GetComponent<Rigidbody>().AddForce(flatPaper.transform.right * -1f * forwardDir * Time.deltaTime * rollSpeed);
@@ -159,16 +168,20 @@ public class Movement_Paper : MonoBehaviour
 
                 Quaternion rot = Quaternion.Euler(0f, rolledUp_Long.transform.rotation.eulerAngles.y, 0f);
                 flatPaper.transform.rotation = new Quaternion(0f, rot.y, 0f, rot.w);               
-                rolledUp_Short.transform.rotation = Quaternion.Euler(0f, rolledUp_Long.transform.rotation.eulerAngles.y, 90f);
+                
+                rolledUp_Short.transform.rotation = rolledUp_Long.transform.rotation;
                 break;
             case 2:
                 paperPosition = new Vector3(rolledUp_Short.transform.position.x, rolledUp_Short.transform.position.y, rolledUp_Short.transform.position.z);
                 rolledUp_Long.transform.position = paperPosition;
                 flatPaper.transform.position = paperPosition;
 
-                rolledUp_Long.transform.rotation = Quaternion.Euler(90f, rolledUp_Short.transform.rotation.eulerAngles.y, 0f);
+
                 Quaternion rot2 = Quaternion.Euler(0f, rolledUp_Short.transform.rotation.eulerAngles.y, 0f);
-                flatPaper.transform.rotation = new Quaternion(0f, rot2.y, 0f, rot2.w);                     
+                flatPaper.transform.rotation = new Quaternion(0f, rolledUp_Short.transform.rotation.y, 0f, rolledUp_Short.transform.rotation.w);                  
+
+                rolledUp_Long.transform.rotation = rolledUp_Short.transform.rotation;   
+
                 break;
         }
     }
