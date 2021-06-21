@@ -25,13 +25,22 @@ public class Movement_Paper : MonoBehaviour
     private float x_axis;
     private float y_axis;
     private bool button0;
+    private bool button1;
+    private bool button2;
+    private bool button3;
 
     private float deadzone = 0f;
 
+    
+    private float cooldown = 0.5f;
+    private float cooldownTimer = 1f;
+    private bool onCooldown = false;
+    
 
     void Update()
     {
         getInput();
+        checkCooldown();
         rollUp();
         rolledUpMovement();
         realign();
@@ -39,11 +48,24 @@ public class Movement_Paper : MonoBehaviour
         //   Debug.Log(flatPaper.transform.rotation.eulerAngles.y - rolledUp_Long.transform.rotation.eulerAngles.y);
     }
 
+    private void checkCooldown()
+    {
+        cooldownTimer += Time.deltaTime;
+        if (cooldownTimer > cooldown)
+        {
+            onCooldown = false;
+        }
+    }
+
     private void realign()
     {
         if (longSide)
         {
             flatPaper.transform.LookAt(flatPaper.transform.position + rolledUp_Long.transform.up);
+        } else if (!flat)
+        {
+            flatPaper.transform.LookAt(flatPaper.transform.position + rolledUp_Short.transform.up);
+            flatPaper.transform.Rotate(new Vector3(0,90,0),Space.Self);
         }
     }
 
@@ -51,49 +73,129 @@ public class Movement_Paper : MonoBehaviour
     {
 
         x_axis = Input.GetAxis("Horizontal");
+        if (Input.GetKey(KeyCode.A))
+        {
+            x_axis = -1;
+        }
+        else if (Input.GetKey(KeyCode.D))
+        {
+            x_axis = 1;
+        }
+
         // y_axis = Input.GetAxis("Vertical");
+
         y_axis = Input.GetAxis("Triggers");
-        button0 = Input.GetButtonDown("button0") || Input.GetKeyDown(KeyCode.E);
+        if (Input.GetKey(KeyCode.W))
+        {
+            y_axis = 1;
+        } else if (Input.GetKey(KeyCode.S))
+        {
+            y_axis = -1;
+        }
+
+        button0 = Input.GetButtonDown("button0") || Input.GetKeyDown(KeyCode.DownArrow);
+        button1 = Input.GetButtonDown("button1") || Input.GetKeyDown(KeyCode.RightArrow);
+        button2 = Input.GetButtonDown("button2") || Input.GetKeyDown(KeyCode.LeftArrow);
+        button3 = Input.GetButtonDown("button3") || Input.GetKeyDown(KeyCode.UpArrow);
 
     }
 
     private void rolledUpRotation()
     {
+        if (longSide)
+        {
+            Rigidbody longRb = rolledUp_Long.GetComponent<Rigidbody>();
 
+            rotationSpeed = 1f * longRb.velocity.magnitude;
+            rotationSpeed = Mathf.Clamp(rotationSpeed, 0.1f, 1f);
+            Vector3 rotation = new Vector3(0f, 90f, 0f) * rotationSpeed * Time.deltaTime;
 
+            bool forward;
+            Vector3 vel_without_y = new Vector3(longRb.velocity.x, 0f, longRb.velocity.z);
+            forward = (Vector3.Angle(vel_without_y, flatPaper.transform.right * -1) < 10f);
+            // Debug.Log(forward);
 
-        Rigidbody longRb = rolledUp_Long.GetComponent<Rigidbody>();
-        Rigidbody shortRb = rolledUp_Short.GetComponent<Rigidbody>();
+            bool backward;
+            backward = (Vector3.Angle(vel_without_y, flatPaper.transform.right * 1) < 10f);
 
-        rotationSpeed = 1f * longRb.velocity.magnitude;
-        rotationSpeed = Mathf.Clamp(rotationSpeed, 0.1f, 1f);
-        Vector3 rotation = new Vector3(0f, 90f, 0f) * rotationSpeed * Time.deltaTime;
+            // Debug.Log(backward);
 
-        bool forward;
-        Vector3 vel_without_y = new Vector3(longRb.velocity.x, 0f, longRb.velocity.z);
-        forward = (Vector3.Angle(vel_without_y, flatPaper.transform.right * -1) < 10f);
-        // Debug.Log(forward);
+            if ((longRb.velocity.magnitude > 0.1f) && (forward))
+            {
+                if (Input.GetKey(KeyCode.A) || x_axis < -deadzone)
+                {
+                    rolledUp_Long.transform.Rotate(x_axis * rotation * 1f, Space.World);
+                }
+                else if (Input.GetKey(KeyCode.D) || x_axis > deadzone)
+                {
+                    rolledUp_Long.transform.Rotate(x_axis * rotation, Space.World);
+                }
+            }
+            else if ((longRb.velocity.magnitude > 0.1f) && (backward))
+            {
+                if (Input.GetKey(KeyCode.D) || x_axis > deadzone)
+                {
+                    rolledUp_Long.transform.Rotate(rotation * -1f * x_axis, Space.World);
+                }
+                else if (Input.GetKey(KeyCode.A) || x_axis < -deadzone)
+                {
+                    rolledUp_Long.transform.Rotate(rotation * x_axis * -1f, Space.World);
+                }
+            }
+        } else
+        {
+            Rigidbody shortRb = rolledUp_Short.GetComponent<Rigidbody>();
 
+            rotationSpeed = 1f * shortRb.velocity.magnitude;
+            rotationSpeed = Mathf.Clamp(rotationSpeed, 0.1f, 1f);
+            Vector3 rotation = new Vector3(0f, 90f, 0f) * rotationSpeed * Time.deltaTime;
+
+            bool forward;
+            Vector3 vel_without_y = new Vector3(shortRb.velocity.x, 0f, shortRb.velocity.z);
+            forward = (Vector3.Angle(vel_without_y, flatPaper.transform.forward * 1) < 10f);
+            // Debug.Log(forward);
+
+            bool backward;
+            backward = (Vector3.Angle(vel_without_y, flatPaper.transform.forward * -1) < 10f);
+
+            if ((shortRb.velocity.magnitude > 0.1f) && (forward))
+            {
+                if (Input.GetKey(KeyCode.A) || x_axis < -deadzone)
+                {
+                    rolledUp_Short.transform.Rotate(x_axis * rotation * 1f, Space.World);
+                }
+                else if (Input.GetKey(KeyCode.D) || x_axis > deadzone)
+                {
+                    rolledUp_Short.transform.Rotate(x_axis * rotation, Space.World);
+                }
+            }
+            else if ((shortRb.velocity.magnitude > 0.1f) && (backward))
+            {
+                if (Input.GetKey(KeyCode.D) || x_axis > deadzone)
+                {
+                    rolledUp_Short.transform.Rotate(rotation * -1f * x_axis, Space.World);
+                }
+                else if (Input.GetKey(KeyCode.A) || x_axis < -deadzone)
+                {
+                    rolledUp_Short.transform.Rotate(rotation * x_axis * -1f, Space.World);
+                }
+            }
+
+        }
+
+        /*
         if ((longRb.velocity.magnitude > 0.1f) && (forward))
         // if (Input.GetKey(KeyCode.W) || y_axis > deadzone)
         {
-
             if (longSide)
             {
                 if (Input.GetKey(KeyCode.A) || x_axis < -deadzone)
                 {
                     rolledUp_Long.transform.Rotate(x_axis * rotation * 1f, Space.World);
-                    //  flatPaper.transform.Rotate(x_axis * rotation * 1f, Space.World);
-
-                    //   Quaternion rot1 = Quaternion.Euler(flatPaper.transform.rotation.eulerAngles.x, rolledUp_Long.transform.rotation.eulerAngles.y, flatPaper.transform.rotation.eulerAngles.z);
-                    //   flatPaper.transform.rotation = rot1;
-
                 }
                 else if (Input.GetKey(KeyCode.D) || x_axis > deadzone)
                 {
                     rolledUp_Long.transform.Rotate(x_axis * rotation, Space.World);
-                    //   flatPaper.transform.Rotate(x_axis * rotation, Space.World);
-
                 }
             }
             else
@@ -101,14 +203,10 @@ public class Movement_Paper : MonoBehaviour
                 if (Input.GetKey(KeyCode.A))
                 {
                     rolledUp_Short.transform.Rotate(rotation * -1f, Space.World);
-                    //   flatPaper.transform.Rotate(rotation * -1f, Space.World);
-
                 }
                 else if (Input.GetKey(KeyCode.D))
                 {
                     rolledUp_Short.transform.Rotate(rotation, Space.World);
-                    //   flatPaper.transform.Rotate(rotation, Space.World);
-
                 }
             }
         }
@@ -119,12 +217,10 @@ public class Movement_Paper : MonoBehaviour
                 if (Input.GetKey(KeyCode.D) || x_axis > deadzone)
                 {
                     rolledUp_Long.transform.Rotate(rotation * -1f * x_axis, Space.World);
-                    // flatPaper.transform.Rotate(rotation * -1f * x_axis, Space.World);
                 }
                 else if (Input.GetKey(KeyCode.A) || x_axis < deadzone)
                 {
                     rolledUp_Long.transform.Rotate(rotation * x_axis * -1f, Space.World);
-                    // flatPaper.transform.Rotate(rotation * x_axis * -1f, Space.World);
                 }
             }
             else
@@ -141,6 +237,7 @@ public class Movement_Paper : MonoBehaviour
                 }
             }
         }
+        */
     }
     private void rolledUpMovement()
     {
@@ -154,15 +251,21 @@ public class Movement_Paper : MonoBehaviour
                 }
                 else if (Input.GetKey(KeyCode.W) || y_axis > deadzone)
                 {
-                    rolledUp_Long.GetComponent<Rigidbody>().AddForce(flatPaper.transform.right * -1 * Time.deltaTime * rollSpeed * y_axis);
+                    rolledUp_Long.GetComponent<Rigidbody>().AddForce(flatPaper.transform.right * Time.deltaTime * rollSpeed * y_axis * -1f);
                 }
                 // else rolledUp_Long.GetComponent<Rigidbody>().velocity -= rolledUp_Long.GetComponent<Rigidbody>().velocity * slowDownSpeed * Time.deltaTime; // use rigidbody drag instead
             }
             else
             {
-                if (Input.GetKey(KeyCode.W)) rolledUp_Short.GetComponent<Rigidbody>().AddForce(flatPaper.transform.forward * Time.deltaTime * rollSpeed);
-                else if (Input.GetKey(KeyCode.S)) rolledUp_Short.GetComponent<Rigidbody>().AddForce(flatPaper.transform.forward * -1 * Time.deltaTime * rollSpeed);
-                else rolledUp_Short.GetComponent<Rigidbody>().velocity -= rolledUp_Short.GetComponent<Rigidbody>().velocity * slowDownSpeed * Time.deltaTime;
+                if (Input.GetKey(KeyCode.W) || y_axis < -deadzone)
+                {
+                    rolledUp_Short.GetComponent<Rigidbody>().AddForce(flatPaper.transform.forward * Time.deltaTime * rollSpeed * y_axis);
+                }
+                else if (Input.GetKey(KeyCode.S) || y_axis > deadzone)
+                {
+                    rolledUp_Short.GetComponent<Rigidbody>().AddForce(flatPaper.transform.forward * Time.deltaTime * rollSpeed * y_axis);
+                }
+                // else rolledUp_Short.GetComponent<Rigidbody>().velocity -= rolledUp_Short.GetComponent<Rigidbody>().velocity * slowDownSpeed * Time.deltaTime;
             }
 
             rolledUpRotation();
@@ -171,9 +274,11 @@ public class Movement_Paper : MonoBehaviour
 
     private void rollUp()
     {
+        if (onCooldown) return;
+
         if (flat)
         {
-            if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S))
+            if (button3 || button0)
             {
                 flatPaper.SetActive(false);
                 rolledUp_Long.SetActive(false);
@@ -181,13 +286,16 @@ public class Movement_Paper : MonoBehaviour
 
                 rolledUp_Short.GetComponent<Rigidbody>().velocity = new Vector3();
 
-                if (Input.GetKey(KeyCode.W)) synchroniseObjects(0f, 0f);
-                else if (Input.GetKey(KeyCode.S)) synchroniseObjects(0f, 1f);
+                if (button3) synchroniseObjects(0f, 0f);
+                else if (button0) synchroniseObjects(0f, 1f);
 
                 flat = false;
                 longSide = false;
+
+                cooldownTimer = 0;
+                onCooldown = true;
             }
-            else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.A) || Mathf.Abs(x_axis) > 0.9f)
+            else if (button1 || button2)
             {
                 flatPaper.SetActive(false);
                 rolledUp_Long.SetActive(true);
@@ -195,16 +303,19 @@ public class Movement_Paper : MonoBehaviour
 
                 rolledUp_Long.GetComponent<Rigidbody>().velocity = new Vector3();
 
-                if (Input.GetKey(KeyCode.D)) synchroniseObjects(0f, 3f);
-                else if (Input.GetKey(KeyCode.A)) synchroniseObjects(0f, 2f);
+                if (button1) synchroniseObjects(0f, 3f);
+                else if (button2) synchroniseObjects(0f, 2f);
 
                 flat = false;
                 longSide = true;
+
+                cooldownTimer = 0;
+                onCooldown = true;
             }
         }
         else
         {
-            if (/*Input.GetKey(KeyCode.E)*/ button0 && (!Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.S) && !Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.W)))
+            if (button0 || button1 || button2 || button3)
             {
                 flatPaper.SetActive(true);
                 rolledUp_Long.SetActive(false);
@@ -215,6 +326,9 @@ public class Movement_Paper : MonoBehaviour
 
                 flat = true;
                 longSide = false;
+
+                cooldownTimer = 0;
+                onCooldown = true;
             }
         }
     }
