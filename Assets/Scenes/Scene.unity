@@ -397,6 +397,42 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: -2432090755550338912, guid: 7d052ba225b1c684a90d658b808b1a0d, type: 3}
+    - target: {fileID: 2045392483, guid: bdb3f611d4fe98e4ea63ace9f24b24a9, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.6295598
+      objectReference: {fileID: 0}
+    - target: {fileID: 2045392483, guid: bdb3f611d4fe98e4ea63ace9f24b24a9, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.3219541
+      objectReference: {fileID: 0}
+    - target: {fileID: 2045392483, guid: bdb3f611d4fe98e4ea63ace9f24b24a9, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.6295598
+      objectReference: {fileID: 0}
+    - target: {fileID: 2045392483, guid: bdb3f611d4fe98e4ea63ace9f24b24a9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.3219541
+      objectReference: {fileID: 0}
+    - target: {fileID: 2045392483, guid: bdb3f611d4fe98e4ea63ace9f24b24a9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 2045392483, guid: bdb3f611d4fe98e4ea63ace9f24b24a9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 54.17
+      objectReference: {fileID: 0}
+    - target: {fileID: 2045392484, guid: bdb3f611d4fe98e4ea63ace9f24b24a9, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: -3033667219593020291, guid: 7d052ba225b1c684a90d658b808b1a0d, type: 3}
+    - target: {fileID: 2045392485, guid: bdb3f611d4fe98e4ea63ace9f24b24a9, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -2432090755550338912, guid: 7d052ba225b1c684a90d658b808b1a0d, type: 3}
+    - target: {fileID: 2045392486, guid: bdb3f611d4fe98e4ea63ace9f24b24a9, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -2432090755550338912, guid: 7d052ba225b1c684a90d658b808b1a0d, type: 3}
     - target: {fileID: 3807890984056986336, guid: bdb3f611d4fe98e4ea63ace9f24b24a9, type: 3}
       propertyPath: m_Name
       value: Player-Paper
@@ -750,7 +786,7 @@ Transform:
   m_GameObject: {fileID: 1757764239}
   m_LocalRotation: {x: -0.15967473, y: -0, z: -0, w: 0.9871697}
   m_LocalPosition: {x: -1.6480359, y: 0.6, z: 11.37}
-  m_LocalScale: {x: 3.6, y: 1, z: 8.8}
+  m_LocalScale: {x: 16.83, y: 1, z: 22.53}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 9

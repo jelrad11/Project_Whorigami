@@ -23,10 +23,15 @@ public class Movement_Paper : MonoBehaviour
     public GameObject posRefA;
 
     private float transfCooldown = 1f;
+    
+    void Start(){
+    }
     void Update(){
+        
         rollUp();
         rolledUpMovement();
         checkVelocity();
+
 
         transfCooldown -= Time.deltaTime;
 
@@ -91,7 +96,7 @@ public class Movement_Paper : MonoBehaviour
                 else rolledUp_Long.GetComponent<Rigidbody>().velocity -= rolledUp_Long.GetComponent<Rigidbody>().velocity * slowDownSpeed * Time.deltaTime;
             }
             else{
-                if(forwardDir != 0f) rolledUp_Short.GetComponent<Rigidbody>().AddForce(flatPaper.transform.forward * forwardDir * Time.deltaTime * rollSpeed);
+                if(forwardDir != 0f) rolledUp_Short.GetComponent<Rigidbody>().AddForce(flatPaper.transform.right * -1f * forwardDir * Time.deltaTime * rollSpeed);
                 else rolledUp_Short.GetComponent<Rigidbody>().velocity -= rolledUp_Short.GetComponent<Rigidbody>().velocity * slowDownSpeed * Time.deltaTime;
             }
 
@@ -159,7 +164,7 @@ public class Movement_Paper : MonoBehaviour
                 rolledUp_Short.transform.position = synchroniseObjectPos(direction);
 
                 rolledUp_Long.transform.rotation = Quaternion.Euler(0f, flatPaper.transform.rotation.eulerAngles.y, 0f);
-                rolledUp_Short.transform.rotation = Quaternion.Euler(0f, flatPaper.transform.rotation.eulerAngles.y, 0f);
+                rolledUp_Short.transform.rotation = Quaternion.Euler(0f, flatPaper.transform.rotation.eulerAngles.y + 90f, 0f);
                 break;
             case 1:
                 paperPosition = new Vector3(rolledUp_Long.transform.position.x, rolledUp_Long.transform.position.y, rolledUp_Long.transform.position.z);
@@ -176,10 +181,13 @@ public class Movement_Paper : MonoBehaviour
                 rolledUp_Long.transform.position = paperPosition;
                 flatPaper.transform.position = paperPosition;
 
+                Quaternion asdf = rolledUp_Short.transform.rotation;
 
-                Quaternion rot2 = Quaternion.Euler(0f, rolledUp_Short.transform.rotation.eulerAngles.y, 0f);
-                flatPaper.transform.rotation = new Quaternion(0f, rolledUp_Short.transform.rotation.y, 0f, rolledUp_Short.transform.rotation.w);                  
-
+                // if()
+                 Quaternion rot2 = Quaternion.Euler(0f, rolledUp_Short.transform.rotation.eulerAngles.y, 0f);
+                flatPaper.transform.rotation = new Quaternion(0f, rot2.y, 0f, rot2.w);                  
+                
+                // flatPaper.transform.LookAt(flatPaper.transform.position + rolledUp_Long.transform.up);
                 rolledUp_Long.transform.rotation = rolledUp_Short.transform.rotation;   
 
                 break;
