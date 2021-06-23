@@ -21,8 +21,10 @@ public class Movement_Frog : MonoBehaviour
     private bool walking;
     Rigidbody frogRigidbody;
     
+    private float forwardPog = 1f;
     void Start(){
         frogRigidbody = gameObject.GetComponent<Rigidbody>();
+    
     }
     void Update()
     {
@@ -34,27 +36,31 @@ public class Movement_Frog : MonoBehaviour
         Vector3 rotationVector = new Vector3();
 
         if(Input.GetKey(KeyCode.W)) { 
-            movementVector = gameObject.transform.forward; 
+            if(forwardPog == -1f){
+                gameObject.transform.Rotate(new Vector3(0f, 180f, 0f), Space.Self);
+                forwardPog = 1f;
+            }
+            movementVector = gameObject.transform.forward * forwardPog; 
+
+
             walking = true;
         }
         else if(Input.GetKey(KeyCode.S)) {
-            movementVector = gameObject.transform.forward * -1f;
+            if(forwardPog == 1f){
+                gameObject.transform.Rotate(new Vector3(0f, 180f, 0f), Space.Self);
+                forwardPog = -1f;
+            }
+            movementVector = gameObject.transform.forward * -1f * forwardPog;
+            
             walking = true;
         }
-        else if(Input.GetKey(KeyCode.A)) {
-            movementVector = gameObject.transform.right * -1f; 
-            walking = true;
-        }
-        else if(Input.GetKey(KeyCode.D)) {
-            movementVector = gameObject.transform.right; 
-            walking = true;
-        }
+
         else walking = false;
 
-        if(!walking){
-            if(Input.GetKey(KeyCode.E)) rotationVector = new Vector3(0f, 90f, 0f);
-            else if(Input.GetKey(KeyCode.Q)) rotationVector = new Vector3(0f, -90f, 0f);
-        }
+        // if(!walking){
+            if(Input.GetKey(KeyCode.D)) rotationVector = new Vector3(0f, 90f, 0f);
+            else if(Input.GetKey(KeyCode.A)) rotationVector = new Vector3(0f, -90f, 0f);
+        // }
         
 
         gameObject.transform.position = gameObject.transform.position + (movementVector * walkingSpeed * Time.deltaTime);
@@ -62,7 +68,7 @@ public class Movement_Frog : MonoBehaviour
     }
     private void jumpingMovement(){
 
-        Vector3 jumpVector = gameObject.transform.up + (gameObject.transform.forward * directionalJumpStrength);
+        Vector3 jumpVector = gameObject.transform.up + (gameObject.transform.forward  * directionalJumpStrength);
 
         if(Input.GetKey(KeyCode.Space) && !jumping){
             jumping = true;
