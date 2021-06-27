@@ -6828,7 +6828,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 9fbe94539752f154ba2eab7a614b05cf, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: d17c4a3f9df04794eabdb60cbcfc7238, type: 2}
+      objectReference: {fileID: 2100000, guid: dc2814b4e8a888648b3927cd0307a3ee, type: 2}
     - target: {fileID: 919132149155446097, guid: 9fbe94539752f154ba2eab7a614b05cf, type: 3}
       propertyPath: m_Name
       value: m_bookSolo01 (1)
@@ -9215,7 +9215,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 9fbe94539752f154ba2eab7a614b05cf, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: d17c4a3f9df04794eabdb60cbcfc7238, type: 2}
+      objectReference: {fileID: 2100000, guid: dc2814b4e8a888648b3927cd0307a3ee, type: 2}
     - target: {fileID: 919132149155446097, guid: 9fbe94539752f154ba2eab7a614b05cf, type: 3}
       propertyPath: m_Name
       value: m_bookSolo01 (4)
@@ -28595,7 +28595,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh44808
+  m_Name: pb_Mesh23480
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -45425,6 +45425,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 89.992
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 9fbe94539752f154ba2eab7a614b05cf, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: dc2814b4e8a888648b3927cd0307a3ee, type: 2}
     - target: {fileID: 919132149155446097, guid: 9fbe94539752f154ba2eab7a614b05cf, type: 3}
       propertyPath: m_Name
       value: m_bookSolo01 (17)
@@ -57711,7 +57715,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh44934
+  m_Name: pb_Mesh23612
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -75208,7 +75212,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 9fbe94539752f154ba2eab7a614b05cf, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: d17c4a3f9df04794eabdb60cbcfc7238, type: 2}
+      objectReference: {fileID: 2100000, guid: dc2814b4e8a888648b3927cd0307a3ee, type: 2}
     - target: {fileID: 919132149155446097, guid: 9fbe94539752f154ba2eab7a614b05cf, type: 3}
       propertyPath: m_Name
       value: m_bookSolo01 (7)
@@ -80965,7 +80969,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 9fbe94539752f154ba2eab7a614b05cf, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: d17c4a3f9df04794eabdb60cbcfc7238, type: 2}
+      objectReference: {fileID: 2100000, guid: dc2814b4e8a888648b3927cd0307a3ee, type: 2}
     - target: {fileID: 919132149155446097, guid: 9fbe94539752f154ba2eab7a614b05cf, type: 3}
       propertyPath: m_Name
       value: m_bookSolo01 (14)
