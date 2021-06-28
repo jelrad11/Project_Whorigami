@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 719378189}
   m_Layer: 0
   m_Name: rolledUp_Long
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -128,7 +128,7 @@ GameObject:
   - component: {fileID: 3358243052727180074}
   m_Layer: 0
   m_Name: rolledUp_Short
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -301,7 +301,7 @@ GameObject:
   - component: {fileID: 3807890983825209105}
   m_Layer: 0
   m_Name: flat
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -314,7 +314,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3807890983825209197}
   m_LocalRotation: {x: -0.026282435, y: -0, z: -0, w: 0.9996546}
-  m_LocalPosition: {x: 0, y: 1.382, z: -3.168}
+  m_LocalPosition: {x: 0, y: 1.5499997, z: -3.168}
   m_LocalScale: {x: 1.05, y: 0.05, z: 1.485}
   m_Children:
   - {fileID: 3807890983431718492}
@@ -414,7 +414,7 @@ GameObject:
   - component: {fileID: 3807890984056986338}
   m_Layer: 0
   m_Name: Player-Paper
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
