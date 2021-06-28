@@ -63,7 +63,7 @@ public class Movement_Paper : MonoBehaviour
     }
 
     private void rolledUpRotation(){
-        Vector3 rotation = new Vector3(0f, 90f, 0f) * (rotationSpeed/maxVelocity) * curVelocity * Time.deltaTime;
+        Vector3 rotation = new Vector3(0f, 90f, 0f) * (rotationSpeed/maxVelocity) * Time.deltaTime;
         Rigidbody longRb = rolledUp_Long.GetComponent<Rigidbody>();
         Rigidbody shortRb = rolledUp_Short.GetComponent<Rigidbody>();
         

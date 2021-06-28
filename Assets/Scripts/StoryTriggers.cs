@@ -14,7 +14,7 @@ public class StoryTriggers : MonoBehaviour
     {
         if(other.gameObject.tag == "Player"){
             mainStoryController.callStory(storyPoint);
-            gameObject.transform.parent.gameObject.SetActive(false);
+            gameObject.SetActive(false);
         }
     }
 
