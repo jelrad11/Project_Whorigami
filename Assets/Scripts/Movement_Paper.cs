@@ -63,7 +63,7 @@ public class Movement_Paper : MonoBehaviour
     }
 
     private void rolledUpRotation(){
-        Vector3 rotation = new Vector3(0f, 90f, 0f) * (rotationSpeed/maxVelocity) * Time.deltaTime;
+        Vector3 rotation = new Vector3(0f, 90f, 0f) * rotationSpeed * Time.deltaTime;
         Rigidbody longRb = rolledUp_Long.GetComponent<Rigidbody>();
         Rigidbody shortRb = rolledUp_Short.GetComponent<Rigidbody>();
         
@@ -153,7 +153,16 @@ public class Movement_Paper : MonoBehaviour
             
                 if(longSide) synchroniseObjects(1f);
                 else synchroniseObjects(2f);
-
+                
+                Quaternion rot;
+                if(longSide) {
+                    rot = Quaternion.Euler(0f, rolledUp_Long.transform.rotation.eulerAngles.y, 0f);
+                    flatPaper.transform.rotation = new Quaternion(0f, rot.y, 0f, rot.w);           
+                }     
+                else {
+                    Quaternion rot2 = Quaternion.Euler(0f, rolledUp_Short.transform.rotation.eulerAngles.y -90f, 0f);
+                    flatPaper.transform.rotation = new Quaternion(0f, rot2.y, 0f, rot2.w);  
+                } 
                 flat = true;
                 longSide = false;
 
@@ -190,7 +199,7 @@ public class Movement_Paper : MonoBehaviour
 
                 Quaternion asdf = rolledUp_Short.transform.rotation;
 
-                Quaternion rot2 = Quaternion.Euler(0f, rolledUp_Short.transform.rotation.eulerAngles.y, 0f);
+                Quaternion rot2 = Quaternion.Euler(0f, rolledUp_Short.transform.rotation.eulerAngles.y , 0f);
                 flatPaper.transform.rotation = new Quaternion(0f, rot2.y, 0f, rot2.w);                  
                 
                 // flatPaper.transform.LookAt(flatPaper.transform.position + rolledUp_Long.transform.up);
