@@ -5,6 +5,7 @@ using UnityEngine;
 public class Movement_Paper : MonoBehaviour 
 {
     public float maxVelocity = 5f;
+    private float curVelocity; 
     public float rollSpeed = 5f;
     public float rotationSpeed = 5f;
     public float slowDownSpeed = 1f;
@@ -25,6 +26,7 @@ public class Movement_Paper : MonoBehaviour
     private float transfCooldown = 1f;
     
     void Start(){
+        curVelocity = 0f;
     }
     void Update(){
         
@@ -43,18 +45,23 @@ public class Movement_Paper : MonoBehaviour
     }
 
     private void checkVelocity(){
-        Vector3 curVelocity;
-        if(longSide) curVelocity = rolledUp_Long.GetComponent<Rigidbody>().velocity;
-        else curVelocity = rolledUp_Short.GetComponent<Rigidbody>().velocity;
+        if(longSide){
+            Rigidbody longRB = rolledUp_Long.GetComponent<Rigidbody>();
+            if(longRB.velocity.magnitude > maxVelocity){
+                longRB.velocity = longRB.velocity.normalized * maxVelocity;
+            }
+            curVelocity = longRB.velocity.magnitude;
+        }
+        else if(!flat){
+            Rigidbody shortRB = rolledUp_Short.GetComponent<Rigidbody>();
+            if(shortRB.velocity.magnitude > maxVelocity){
+                shortRB.velocity = shortRB.velocity.normalized * maxVelocity;
+            }
+            curVelocity = shortRB.velocity.magnitude;
+        }
 
-        Vector3 finalVelocity = curVelocity;
-        if(curVelocity.x > maxVelocity) finalVelocity = new Vector3(maxVelocity, curVelocity.y, curVelocity.z);
-        if(curVelocity.y > maxVelocity) finalVelocity = new Vector3(curVelocity.x, maxVelocity, curVelocity.z);
-        if(curVelocity.z > maxVelocity) finalVelocity = new Vector3(curVelocity.x, curVelocity.y, maxVelocity);
-
-        if(longSide) rolledUp_Long.GetComponent<Rigidbody>().velocity = finalVelocity;
-        else rolledUp_Short.GetComponent<Rigidbody>().velocity = finalVelocity;
     }
+
     private void rolledUpRotation(){
         Vector3 rotation = new Vector3(0f, 90f, 0f) * rotationSpeed * Time.deltaTime;
         Rigidbody longRb = rolledUp_Long.GetComponent<Rigidbody>();
@@ -146,7 +153,16 @@ public class Movement_Paper : MonoBehaviour
             
                 if(longSide) synchroniseObjects(1f);
                 else synchroniseObjects(2f);
-
+                
+                Quaternion rot;
+                if(longSide) {
+                    rot = Quaternion.Euler(0f, rolledUp_Long.transform.rotation.eulerAngles.y, 0f);
+                    flatPaper.transform.rotation = new Quaternion(0f, rot.y, 0f, rot.w);           
+                }     
+                else {
+                    Quaternion rot2 = Quaternion.Euler(0f, rolledUp_Short.transform.rotation.eulerAngles.y -90f, 0f);
+                    flatPaper.transform.rotation = new Quaternion(0f, rot2.y, 0f, rot2.w);  
+                } 
                 flat = true;
                 longSide = false;
 
@@ -183,8 +199,7 @@ public class Movement_Paper : MonoBehaviour
 
                 Quaternion asdf = rolledUp_Short.transform.rotation;
 
-                // if()
-                 Quaternion rot2 = Quaternion.Euler(0f, rolledUp_Short.transform.rotation.eulerAngles.y, 0f);
+                Quaternion rot2 = Quaternion.Euler(0f, rolledUp_Short.transform.rotation.eulerAngles.y , 0f);
                 flatPaper.transform.rotation = new Quaternion(0f, rot2.y, 0f, rot2.w);                  
                 
                 // flatPaper.transform.LookAt(flatPaper.transform.position + rolledUp_Long.transform.up);
