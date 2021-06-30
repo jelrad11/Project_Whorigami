@@ -27,12 +27,41 @@ public class Movement_Bird_G : MonoBehaviour
     public float basicFlap = 0.1f;
     public float boostMultiplier = 3f;
 
-    public GameObject bird; 
+    public GameObject bird;
+
+    private bool stable = true;
 
     // Update is called once per frame
     void Update()
     {
-        flyG();
+        if (stable)
+        {
+            flyG();
+        }
+        //   Debug.Log(stable);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        stable = false;
+        StartCoroutine("Falling");
+    }
+
+    private IEnumerator Falling()
+    {
+        float falltime = 0f;
+        while (falltime < 1f)
+        {
+            falltime += Time.deltaTime;
+
+
+
+            yield return null;
+        }
+        stable = true;
+        movementSpeed = minSpeed;
+        bird.transform.Rotate(0, 180, 0, Space.Self);
+        yield break;
     }
 
     private void flyG()

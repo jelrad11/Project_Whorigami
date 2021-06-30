@@ -1,5 +1,34 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &5230231253753313079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3944070858006357861}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 650889baf303f0e40bb37fecbc3cb035, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementSpeed: 3
+  minSpeed: 4
+  maxSpeed: 4.5
+  vertMaxRotationSpeed: 75
+  vertCurrentRotationSpeed: 0
+  vertRotFriction: 80
+  vertRotationLimit: 60
+  vertRotAcc: 180
+  horiMaxRotationSpeed: 75
+  horiCurrentRotationSpeed: 0
+  horiRotFriction: 60
+  horiRotAcc: 180
+  angle: 0
+  grav: -2
+  basicFlap: 0.1
+  boostMultiplier: 3
+  bird: {fileID: 3944070858006357861}
 --- !u!1 &6967424178557373116
 GameObject:
   m_ObjectHideFlags: 0
@@ -9,7 +38,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 929973068796579350}
-  - component: {fileID: 7501331544016362651}
   m_Layer: 0
   m_Name: Player-Bird
   m_TagString: Untagged
@@ -32,35 +60,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7501331544016362651
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6967424178557373116}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 650889baf303f0e40bb37fecbc3cb035, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movementSpeed: 3
-  minSpeed: 1
-  maxSpeed: 7
-  vertMaxRotationSpeed: 50
-  vertCurrentRotationSpeed: 0
-  vertRotFriction: 50
-  vertRotationLimit: 60
-  vertRotAcc: 150
-  horiMaxRotationSpeed: 80
-  horiCurrentRotationSpeed: 0
-  horiRotFriction: 50
-  horiRotAcc: 140
-  angle: 0
-  grav: -2
-  basicFlap: 0.1
-  boostMultiplier: 3
-  bird: {fileID: 0}
 --- !u!1001 &4214610990185929268
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -134,6 +133,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 886d69011a5c11945bf9421705264aab, type: 3}
+--- !u!1 &3944070858006357861 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 886d69011a5c11945bf9421705264aab, type: 3}
+  m_PrefabInstance: {fileID: 4214610990185929268}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4465309276243508703 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 886d69011a5c11945bf9421705264aab, type: 3}
