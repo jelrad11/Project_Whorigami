@@ -106,7 +106,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3107168083913808744}
   m_Layer: 0
-  m_Name: Bigger Branch5
+  m_Name: BiggerBranch5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

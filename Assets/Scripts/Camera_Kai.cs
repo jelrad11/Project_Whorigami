@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Camera_Kai : MonoBehaviour
 {
+    // wrote this script based off of Camera_G with some tweaks and stuff - Kai
     public Transform target; //birdModel Transform
     public Movement_Bird_G birdScript;// birdparent
 
@@ -11,10 +12,14 @@ public class Camera_Kai : MonoBehaviour
     public Vector3 focalOffset = new Vector3(0f, 0.3f, 0f); // Offset of point in space that camera is looking at in relation to player
 
     public float movementLagCoefficient = 1f;
+    public float rotationLagCoefficient = 1f;
     private Vector3 desiredPosition;
     private Vector3 smoothedPosition;
 
-
+    public bool quaternionDependant = false;
+    public bool angleDependant = false;
+    public bool vertSpeedDependant = false;
+    public bool horiSpeedDependant = false;
 
 
     // Start is called before the first frame update
@@ -33,7 +38,7 @@ public class Camera_Kai : MonoBehaviour
         // rotates desiredPosition around target.position to have offsets be relative to the bird position
         // there's two ways to do this in this script, either the line below or the one that has [2] commented above it
         //[1]
-        // desiredPosition = Quaternion.Euler(target.eulerAngles) * (desiredPosition - target.position) + target.position;
+        if (quaternionDependant == true) desiredPosition = Quaternion.Euler(target.eulerAngles) * (desiredPosition - target.position) + target.position;
 
 
 
@@ -45,12 +50,12 @@ public class Camera_Kai : MonoBehaviour
         //[2]
 
         //use either of the lines below, .angle is slightly less aggressive than vericcurrentspeed, when using this disable [1]
-        transform.RotateAround(target.transform.position, Vector3.right, birdScript.angle * Time.deltaTime * movementLagCoefficient);
-        //transform.RotateAround(target.transform.position, Vector3.right, birdScript.vertCurrentRotationSpeed * Time.deltaTime * movementLagCoefficient);
+        if (angleDependant == true) transform.RotateAround(target.transform.position, Vector3.right, birdScript.angle * Time.deltaTime * rotationLagCoefficient);
+        if (vertSpeedDependant == true) transform.RotateAround(target.transform.position, Vector3.right, birdScript.vertCurrentRotationSpeed * Time.deltaTime * rotationLagCoefficient);
 
 
         // I recommend always using the line below
-        transform.RotateAround(target.transform.position, Vector3.up, birdScript.horiCurrentRotationSpeed * Time.deltaTime * movementLagCoefficient);
+        if (horiSpeedDependant == true) transform.RotateAround(target.transform.position, Vector3.up, birdScript.horiCurrentRotationSpeed * Time.deltaTime * rotationLagCoefficient);
 
 
         //has the camera look at point offset by focalOffset from bird
