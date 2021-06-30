@@ -118,16 +118,13 @@ public class Movement_Bird_G : MonoBehaviour
             vertCurrentRotationSpeed += verticalInput * vertRotAcc * Time.deltaTime;
         }
 
-        if (verticalInput == 0)//was added by Kai
+        if (vertCurrentRotationSpeed > 0f) //this applies at all times, even when inputting, might want to change this to only applying when there is no vertical input - Kai
         {
-            if (vertCurrentRotationSpeed > 0f) //this applies at all times, even when inputting, might want to change this to only applying when there is no vertical input - Kai
-            {
-                vertCurrentRotationSpeed -= vertRotFriction * Time.deltaTime;
-            }
-            else
-            {
-                vertCurrentRotationSpeed += vertRotFriction * Time.deltaTime;
-            }
+            vertCurrentRotationSpeed -= vertRotFriction * Time.deltaTime;
+        }
+        else
+        {
+            vertCurrentRotationSpeed += vertRotFriction * Time.deltaTime;
         }
 
         vertCurrentRotationSpeed = Mathf.Clamp(vertCurrentRotationSpeed, -vertMaxRotationSpeed, vertMaxRotationSpeed);
@@ -151,16 +148,13 @@ public class Movement_Bird_G : MonoBehaviour
             horiCurrentRotationSpeed += horizontalInput * horiRotAcc * Time.deltaTime;
         }
 
-        if (horizontalInput == 0) //was added by Kai
+        if (horiCurrentRotationSpeed > 0f) //this also applies at all times, even when inputting, might want to change this to only applying when there is no vertical input - Kai
         {
-            if (horiCurrentRotationSpeed > 0f) //this also applies at all times, even when inputting, might want to change this to only applying when there is no vertical input - Kai
-            {
-                horiCurrentRotationSpeed -= horiRotFriction * Time.deltaTime;
-            }
-            else
-            {
-                horiCurrentRotationSpeed += horiRotFriction * Time.deltaTime;
-            }
+            horiCurrentRotationSpeed -= horiRotFriction * Time.deltaTime;
+        }
+        else
+        {
+            horiCurrentRotationSpeed += horiRotFriction * Time.deltaTime;
         }
 
         horiCurrentRotationSpeed = Mathf.Clamp(horiCurrentRotationSpeed, -horiMaxRotationSpeed, horiMaxRotationSpeed);
