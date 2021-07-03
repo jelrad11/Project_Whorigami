@@ -31366,12 +31366,12 @@ Transform:
   m_Children:
   - {fileID: 1753207074}
   - {fileID: 1556271045}
+  - {fileID: 1960674400}
   - {fileID: 481046325}
   - {fileID: 248819021}
   - {fileID: 967491423}
   - {fileID: 348792818}
   - {fileID: 1805816492}
-  - {fileID: 1960674400}
   - {fileID: 1768837640}
   - {fileID: 623787197}
   - {fileID: 891653471}
@@ -81925,7 +81925,7 @@ Transform:
   m_LocalScale: {x: 0.009707684, y: 0.2967556, z: 0.3895219}
   m_Children: []
   m_Father: {fileID: 734974017}
-  m_RootOrder: 7
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: -0.536, y: -89.852, z: 74.74}
 --- !u!65 &1960674401
 BoxCollider:
@@ -85335,6 +85335,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 41.973
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 93754bcd98603a64eb18afc25ac68f82, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9fdf4bf15e17d2e47bfa0dec2bbd167b, type: 2}
     - target: {fileID: 919132149155446097, guid: 93754bcd98603a64eb18afc25ac68f82, type: 3}
       propertyPath: m_Name
       value: m_poster02
