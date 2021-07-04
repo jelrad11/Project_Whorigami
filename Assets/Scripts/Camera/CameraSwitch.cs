@@ -13,7 +13,7 @@ public class CameraSwitch : MonoBehaviour
         stateSwitchAnimator = GameObject.Find("CameraSwitchController").GetComponent<Animator>();
     }
 
-    private void private void OnTriggerEnter(Collider other) {
+     private void OnTriggerEnter(Collider other) {
         if(other.gameObject.tag == "Player"){
             switchState();
         }
