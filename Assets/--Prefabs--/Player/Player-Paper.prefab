@@ -19,7 +19,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &719378188
 Transform:
   m_ObjectHideFlags: 0
@@ -133,7 +133,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2045392483
 Transform:
   m_ObjectHideFlags: 0
@@ -422,7 +422,7 @@ Transform:
   - {fileID: 3807890984265533946}
   m_Father: {fileID: 3807890984056986337}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -3.012, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &3807890983825209106
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -547,7 +547,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fadd26db35dea04faf7d1a4c787a297, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rollSpeed: 30
+  maxVelocityRoll: 0.4
+  maxVelocityFlat: 1.2
+  rollSpeed: 40
   slowDownSpeed: 0.5
   flatPaper: {fileID: 3807890983825209197}
   rolledUp_Long: {fileID: 719378187}

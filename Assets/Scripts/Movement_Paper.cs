@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Movement_Paper : MonoBehaviour
 {
-    public float maxVelocity = 1f;
+    public float maxVelocityRoll = 0.4f;
+    public float maxVelocityFlat = 1.2f;
     public float rollSpeed = 5f;
 
     private float rotationSpeed = 4f;
@@ -48,6 +49,8 @@ public class Movement_Paper : MonoBehaviour
     bool transform_right;
     bool transform_left;
     bool transform_any;
+
+    private bool colliding;
 
     void Update()
     {
@@ -175,7 +178,7 @@ public class Movement_Paper : MonoBehaviour
         flatRb.velocity = Vector3.zero;
         flatRb.angularVelocity = Vector3.zero;
 
-        float forwardBoost = (lastVelocity / maxVelocity) * 1.5f;
+        float forwardBoost = (lastVelocity / maxVelocityRoll) * 1.5f;
         forwardBoost = Mathf.Clamp(forwardBoost, 0, 1);
 
         if (lastFormLong == false) // last form is short
@@ -216,15 +219,21 @@ public class Movement_Paper : MonoBehaviour
                 {
                     rolledUp_Long.GetComponent<Rigidbody>().AddForce(flatPaper.transform.right * Time.deltaTime * rollSpeed * y_axis * -1f);
                 }
-                else rolledUp_Long.GetComponent<Rigidbody>().velocity -= rolledUp_Long.GetComponent<Rigidbody>().velocity * slowDownSpeed * Time.deltaTime;
+                else
+                {
+                    rolledUp_Long.GetComponent<Rigidbody>().velocity -= rolledUp_Long.GetComponent<Rigidbody>().velocity * slowDownSpeed * Time.deltaTime;
+                }
             }
             else
             {
                 if (y_axis != 0)
                 {
                     rolledUp_Short.GetComponent<Rigidbody>().AddForce(flatPaper.transform.right * -1f * Time.deltaTime * rollSpeed * y_axis);
+                } 
+                else
+                {
+                    rolledUp_Short.GetComponent<Rigidbody>().velocity -= rolledUp_Short.GetComponent<Rigidbody>().velocity * slowDownSpeed * Time.deltaTime;
                 }
-                else rolledUp_Short.GetComponent<Rigidbody>().velocity -= rolledUp_Short.GetComponent<Rigidbody>().velocity * slowDownSpeed * Time.deltaTime;
             }
 
             rolledUpRotation();
@@ -290,23 +299,29 @@ public class Movement_Paper : MonoBehaviour
     private void checkVelocity()
     {
         Rigidbody RB;
+        if (!flat) {
+            if (longSide)
+            {
+                RB = rolledUp_Long.GetComponent<Rigidbody>();
+            }
+            else
+            {
+                RB = rolledUp_Short.GetComponent<Rigidbody>();
+            }
 
-        if (longSide)
-        {
-            RB = rolledUp_Long.GetComponent<Rigidbody>();
-        }
-        else if (!flat)
-        {
-            RB = rolledUp_Short.GetComponent<Rigidbody>();
-        }
-        else
+            if (RB.velocity.magnitude > maxVelocityRoll)
+            {
+                RB.velocity = RB.velocity.normalized * maxVelocityRoll;
+            }
+
+        } else
         {
             RB = flatPaper.GetComponent<Rigidbody>();
-        }
 
-        if (RB.velocity.magnitude > maxVelocity)
-        {
-            RB.velocity = RB.velocity.normalized * maxVelocity;
+            if (RB.velocity.magnitude > maxVelocityFlat)
+            {
+                RB.velocity = RB.velocity.normalized * maxVelocityFlat;
+            }
         }
     }
 
