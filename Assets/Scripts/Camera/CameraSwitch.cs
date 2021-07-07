@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class CameraSwitch : MonoBehaviour
 {
-    public string switchToStateForward;
     public string switchToStateBackward;
+    public string switchToStateForward;
+   
 
     private Animator stateSwitchAnimator;
 
