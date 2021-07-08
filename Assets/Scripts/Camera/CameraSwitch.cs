@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CameraSwitch : MonoBehaviour
 {
-    public string switchToStateBackward;
+//    public string switchToStateBackward;
     public string switchToStateForward;
    
 
@@ -21,9 +21,9 @@ public class CameraSwitch : MonoBehaviour
     }
     
     private void switchState(){
-        if(stateSwitchAnimator.GetCurrentAnimatorStateInfo(0).IsName(switchToStateForward))
-            stateSwitchAnimator.SetTrigger(switchToStateBackward);
-        else 
+//        if(stateSwitchAnimator.GetCurrentAnimatorStateInfo(0).IsName(switchToStateForward))
+//            stateSwitchAnimator.SetTrigger(switchToStateBackward);
+//        else
             stateSwitchAnimator.SetTrigger(switchToStateForward);
     }   
 }

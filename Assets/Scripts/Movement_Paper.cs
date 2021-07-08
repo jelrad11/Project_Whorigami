@@ -56,8 +56,7 @@ public class Movement_Paper : MonoBehaviour
     {
         getInput();
         rollUp();
-        rolledUpMovement();
-        checkVelocity();
+        
         flatPaperFly();
 
         transfCooldown -= Time.deltaTime;
@@ -69,6 +68,8 @@ public class Movement_Paper : MonoBehaviour
         {
             flatPaper.GetComponent<Rigidbody>().AddForce(Vector3.up * weakGravity, ForceMode.Acceleration);
         }
+        rolledUpMovement();
+        checkVelocity();
     }
 
     void getInput()
