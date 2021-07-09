@@ -8,7 +8,7 @@ public class Movement_Paper : MonoBehaviour
     public float maxVelocityFlat = 1.2f;
     public float rollSpeed = 5f;
 
-    private float rotationSpeed = 4f;
+    private float rotationSpeed = 6f;
     private float maxRotationSpeed = 6f;
     private float minRotationSpeed = 0f;
 
@@ -67,6 +67,15 @@ public class Movement_Paper : MonoBehaviour
         if (flat)
         {
             flatPaper.GetComponent<Rigidbody>().AddForce(Vector3.up * weakGravity, ForceMode.Acceleration);
+        } else
+        {
+            if (longSide)
+            {
+                rolledUp_Long.GetComponent<Rigidbody>().AddForce(Vector3.up * 4f, ForceMode.Acceleration);
+            } else
+            {
+                rolledUp_Short.GetComponent<Rigidbody>().AddForce(Vector3.up * 4f, ForceMode.Acceleration);
+            }
         }
         rolledUpMovement();
         checkVelocity();
@@ -218,22 +227,22 @@ public class Movement_Paper : MonoBehaviour
             {
                 if (y_axis != 0)
                 {
-                    rolledUp_Long.GetComponent<Rigidbody>().AddForce(flatPaper.transform.right * Time.deltaTime * rollSpeed * y_axis * -1f);
+                    rolledUp_Long.GetComponent<Rigidbody>().AddForce(flatPaper.transform.right * Time.fixedDeltaTime * rollSpeed * y_axis * -1f);
                 }
                 else
                 {
-                    rolledUp_Long.GetComponent<Rigidbody>().velocity -= rolledUp_Long.GetComponent<Rigidbody>().velocity * slowDownSpeed * Time.deltaTime;
+                 //   rolledUp_Long.GetComponent<Rigidbody>().velocity -= rolledUp_Long.GetComponent<Rigidbody>().velocity * slowDownSpeed * Time.deltaTime;
                 }
             }
             else
             {
                 if (y_axis != 0)
                 {
-                    rolledUp_Short.GetComponent<Rigidbody>().AddForce(flatPaper.transform.right * -1f * Time.deltaTime * rollSpeed * y_axis);
+                    rolledUp_Short.GetComponent<Rigidbody>().AddForce(flatPaper.transform.right * -1f * Time.fixedDeltaTime * rollSpeed * y_axis);
                 } 
                 else
                 {
-                    rolledUp_Short.GetComponent<Rigidbody>().velocity -= rolledUp_Short.GetComponent<Rigidbody>().velocity * slowDownSpeed * Time.deltaTime;
+                 //   rolledUp_Short.GetComponent<Rigidbody>().velocity -= rolledUp_Short.GetComponent<Rigidbody>().velocity * slowDownSpeed * Time.deltaTime;
                 }
             }
 

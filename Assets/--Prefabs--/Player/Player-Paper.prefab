@@ -549,7 +549,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxVelocityRoll: 0.4
   maxVelocityFlat: 1.2
-  rollSpeed: 40
+  rollSpeed: 20
   slowDownSpeed: 0
   flatPaper: {fileID: 3807890983825209197}
   rolledUp_Long: {fileID: 719378187}
