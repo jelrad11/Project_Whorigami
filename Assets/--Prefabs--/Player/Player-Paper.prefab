@@ -413,7 +413,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3807890983825209197}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.5499997, z: -3.168}
+  m_LocalPosition: {x: 0, y: 1.63, z: -3.205}
   m_LocalScale: {x: 1.05, y: 0.05, z: 1.485}
   m_Children:
   - {fileID: 3807890983431718492}
@@ -525,8 +525,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3807890984056986336}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 15.726, y: 8.442, z: -15.75}
   m_LocalScale: {x: 0.16917276, y: 0.16917276, z: 0.16917276}
   m_Children:
   - {fileID: 3807890983825209198}
@@ -550,7 +550,7 @@ MonoBehaviour:
   maxVelocityRoll: 0.4
   maxVelocityFlat: 1.2
   rollSpeed: 40
-  slowDownSpeed: 0.5
+  slowDownSpeed: 0
   flatPaper: {fileID: 3807890983825209197}
   rolledUp_Long: {fileID: 719378187}
   rolledUp_Short: {fileID: 2045392482}
