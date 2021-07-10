@@ -7,6 +7,8 @@ public class StoryTriggers : MonoBehaviour
     public int storyPoint;
     private StoryController mainStoryController;
 
+
+
     void Start(){
         mainStoryController = GameObject.Find("StoryController").GetComponent<StoryController>();
     }
