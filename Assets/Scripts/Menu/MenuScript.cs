@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class MenuScript : MonoBehaviour
 {
-    
+    public int gameStage;
     public List<GameObject> buttonPins;
     public List<GameObject> sideButtonPins;
     public GameObject pauseMenu;
@@ -37,20 +37,29 @@ public class MenuScript : MonoBehaviour
         SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
     }
 
-    private void sliderInteraction(){
-        if(sideButton != 0){
-            useSlider();
+    // public void saveGame(){
+    //     SaveSystem.SavePlayer(gameStage, )
+    // }
+
+    public void restartLevel(){
+        switch(gameStage){
+            case 0:
+            SceneManager.LoadScene("JellyScene");
+            break;
         }
     }
-    private void useSlider(){
-        Slider slider = sideButtonPins[2 - sideButton].GetComponent<Slider>();
-        if((Input.GetAxis("DPadVertical") > 0.25f || Input.GetAxis("Vertical") > 0.25f) && sliderCooldown <= 0f){
-            slider.value = slider.value + sliderValueChange;
-            sliderCooldown = slCD;
-        }
-        if((Input.GetAxis("DPadVertical") < -0.25f || Input.GetAxis("Vertical") < -0.25f) && sliderCooldown <= 0f){
-            slider.value = slider.value - sliderValueChange;
-            sliderCooldown = slCD;
+
+    private void sliderInteraction(){
+        if(sideButton != 0){
+            Slider slider = sideButtonPins[2 - sideButton].GetComponent<Slider>();
+            if((Input.GetAxis("DPadVertical") > 0.25f || Input.GetAxis("Vertical") > 0.25f) && sliderCooldown <= 0f){
+                slider.value = slider.value + sliderValueChange;
+                sliderCooldown = slCD;
+            }
+            if((Input.GetAxis("DPadVertical") < -0.25f || Input.GetAxis("Vertical") < -0.25f) && sliderCooldown <= 0f){
+                slider.value = slider.value - sliderValueChange;
+                sliderCooldown = slCD;
+            }        
         }
     }
 

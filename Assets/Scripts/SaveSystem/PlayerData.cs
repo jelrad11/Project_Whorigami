@@ -8,7 +8,7 @@ public class PlayerData
     public int gameStage; //-1 = not started; 0 = paper; 1 = bird; 2 = frog;
     public float[] position;
     public float[] rotation;
-
+    public string cameraState;
     public PlayerData(){
         gameStage = -1;
 
@@ -22,7 +22,7 @@ public class PlayerData
         rotation[1] = 0f;
         rotation[2] = 0f;
     }
-    public PlayerData(int pGameStage, Vector3 pPosition, Vector3 pRotation){
+    public PlayerData(int pGameStage, Vector3 pPosition, Vector3 pRotation, string pCameraState){
         gameStage = pGameStage;
 
         position = new float[3];
@@ -34,5 +34,7 @@ public class PlayerData
         rotation[0] = pRotation[0];
         rotation[1] = pRotation[1];
         rotation[2] = pRotation[2];
+
+        cameraState = pCameraState;
     }
 }

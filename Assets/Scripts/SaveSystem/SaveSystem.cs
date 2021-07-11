@@ -5,11 +5,11 @@ using System.Runtime.Serialization.Formatters.Binary;
 public class SaveSystem
 {
     private static string path = Application.persistentDataPath + "player.cglWhorigami";
-    public static void SavePlayer(int gameStage, Vector3 position, Vector3 rotation){
+    public static void SavePlayer(int gameStage, Vector3 position, Vector3 rotation, string cameraState){
         BinaryFormatter formatter = new BinaryFormatter();
         FileStream stream = new FileStream(path, FileMode.Create);
 
-        PlayerData data = new PlayerData(gameStage, position, rotation);
+        PlayerData data = new PlayerData(gameStage, position, rotation, cameraState);
 
         formatter.Serialize(stream, data);
         stream.Close();
