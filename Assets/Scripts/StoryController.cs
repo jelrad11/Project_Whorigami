@@ -2,14 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using TMPro;
 
 public class StoryController : MonoBehaviour
 {
     public float maxSubtitleLength = 15f;
-    public Text subtitleBox;
     public AudioSource audioSource;
-
+    public TMP_Text subtitleBox;
     public List<string> storyLines;
     public List<bool> storyTriggers;
     public List<AudioClip> storyAudio;

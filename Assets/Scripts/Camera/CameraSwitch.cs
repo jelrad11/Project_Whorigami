@@ -16,14 +16,11 @@ public class CameraSwitch : MonoBehaviour
 
      private void OnTriggerEnter(Collider other) {
         if(other.gameObject.tag == "Player"){
-            switchState();
+            stateSwitchAnimator.SetTrigger(switchToStateForward);
         }
     }
     
     private void switchState(){
-//        if(stateSwitchAnimator.GetCurrentAnimatorStateInfo(0).IsName(switchToStateForward))
-//            stateSwitchAnimator.SetTrigger(switchToStateBackward);
-//        else
             stateSwitchAnimator.SetTrigger(switchToStateForward);
     }   
 }

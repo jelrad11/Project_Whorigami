@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class MenuScript : MonoBehaviour
 {
     public int gameStage;
+    
     public List<GameObject> buttonPins;
     public List<GameObject> sideButtonPins;
     public GameObject pauseMenu;
@@ -20,8 +21,9 @@ public class MenuScript : MonoBehaviour
     public float sliderValueChange = 0.1f;
     public float slCD = 0.2f;
     private float sliderCooldown = 0.2f;
-    private bool pauseMenuActive = false;
+    private bool pauseMenuActive = true;
 
+    
     private void Update()
     {
         buttonSwitchCooldown -= Time.deltaTime;
@@ -29,10 +31,33 @@ public class MenuScript : MonoBehaviour
 
         changeButtonHover();
         sliderInteraction();
-        if(Input.GetKeyDown(KeyCode.Escape))
-            pauseMenuTrigger();    
+        if(Input.GetKeyDown(KeyCode.Escape) || Input.GetButtonDown("Start") || (Input.GetButtonDown("Cancel") && pauseMenuActive))
+            pauseMenuTrigger();
+
+        if(Input.GetButtonDown("Submit") && pauseMenuActive){
+            switch(currentButton){
+                case 0:
+                pauseMenuTrigger();
+                break;
+                case 1:
+                loadLatest();
+                break;
+                case 2:
+                restartLevel();
+                break;
+                case 3:
+                changeToMenu();
+                break;
+                default:
+                break;
+            }
+        }
     }
 
+    private void applySettings(){
+
+    }
+    
     public void changeToMenu(){
         SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
     }
@@ -44,6 +69,15 @@ public class MenuScript : MonoBehaviour
     public void restartLevel(){
         switch(gameStage){
             case 0:
+            Data.LoadSave = false;
+            SceneManager.LoadScene("JellyScene");
+            break;
+        }
+    }
+    public void loadLatest(){
+        switch(gameStage){
+            case 0:
+            Data.LoadSave = true;
             SceneManager.LoadScene("JellyScene");
             break;
         }
