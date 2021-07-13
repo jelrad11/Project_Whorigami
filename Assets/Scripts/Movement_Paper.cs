@@ -14,8 +14,8 @@ public class Movement_Paper : MonoBehaviour
 
     public float slowDownSpeed = 1f;
 
-    private bool flat = true;
-    private bool longSide = false;
+    public bool flat = true;
+    public bool longSide = false;
 
     public GameObject flatPaper;
     public GameObject rolledUp_Long;
@@ -50,16 +50,59 @@ public class Movement_Paper : MonoBehaviour
     bool transform_left;
     bool transform_any;
 
-    private bool colliding;
+    // variables about what the paper can do through story progression
+
+    public bool canTransformLong;
+    public bool canTransformShort;
+    public bool canFly;
+    public bool canTurn;
+
+    // audio stuff
+    public AudioSource audioSource;
+    public AudioClip roll_up;
+    public AudioClip roll_down;
+
+    public void unrestrictRb()
+    {
+        rolledUp_Long.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+    }
 
     void Update()
     {
         getInput();
         rollUp();
-        
-        flatPaperFly();
+
+        if (canFly)
+        {
+            flatPaperFly();
+        }
 
         transfCooldown -= Time.deltaTime;
+
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            unrestrictRb();
+        }
+
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            canTurn = true;
+        }
+
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            canTransformLong = true;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            canTransformShort = true;
+        }
+
+        if (Input.GetKeyDown(KeyCode.U))
+        {
+            canFly = true;
+        }
     }
 
     private void FixedUpdate()
@@ -67,12 +110,14 @@ public class Movement_Paper : MonoBehaviour
         if (flat)
         {
             flatPaper.GetComponent<Rigidbody>().AddForce(Vector3.up * weakGravity, ForceMode.Acceleration);
-        } else
+        }
+        else
         {
             if (longSide)
             {
                 rolledUp_Long.GetComponent<Rigidbody>().AddForce(Vector3.up * 4f, ForceMode.Acceleration);
-            } else
+            }
+            else
             {
                 rolledUp_Short.GetComponent<Rigidbody>().AddForce(Vector3.up * 4f, ForceMode.Acceleration);
             }
@@ -86,9 +131,11 @@ public class Movement_Paper : MonoBehaviour
         x_axis = Input.GetAxis("Horizontal");
 
 
-        if (flat) {
+        if (flat)
+        {
             y_axis = Input.GetAxis("Vertical");
-        } else
+        }
+        else
         {
             y_axis = Input.GetAxis("RightTriggerAxis") - Input.GetAxis("LeftTriggerAxis");
             if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
@@ -101,10 +148,27 @@ public class Movement_Paper : MonoBehaviour
             }
         }
 
-        transform_up = (Input.GetAxis("DPadVertical") > 0 || Input.GetButtonDown("Button_bot"));
-        transform_down = (Input.GetAxis("DPadVertical") < 0 || Input.GetButtonDown("Button_bot"));
-        transform_right = (Input.GetAxis("DPadHorizontal") > 0 || Input.GetButtonDown("Button_left"));
-        transform_left = (Input.GetAxis("DPadHorizontal") < 0 || Input.GetButtonDown("Button_left"));
+        if (canTransformShort)
+        {
+            transform_up = (Input.GetAxis("DPadVertical") > 0 || Input.GetButtonDown("Button_bot"));
+            transform_down = (Input.GetAxis("DPadVertical") < 0 || Input.GetButtonDown("Button_bot"));
+        }
+        else
+        {
+            transform_up = false;
+            transform_down = false;
+        }
+
+        if (canTransformLong)
+        {
+            transform_right = (Input.GetAxis("DPadHorizontal") > 0 || Input.GetButtonDown("Button_left"));
+            transform_left = (Input.GetAxis("DPadHorizontal") < 0 || Input.GetButtonDown("Button_left"));
+        }
+        else
+        {
+            transform_left = false;
+            transform_right = false;
+        }
 
         transform_any = (transform_up || transform_down || transform_right || transform_left);
     }
@@ -127,6 +191,10 @@ public class Movement_Paper : MonoBehaviour
                 longSide = false;
 
                 transfCooldown = 1f;
+
+                audioSource.clip = roll_up;
+                audioSource.pitch = Random.Range(0.8f, 1.2f);
+                audioSource.Play();
             }
             else if ((transform_left || transform_right) && transfCooldown <= 0f)
             {
@@ -143,6 +211,10 @@ public class Movement_Paper : MonoBehaviour
                 longSide = true;
 
                 transfCooldown = 1f;
+
+                audioSource.clip = roll_up;
+                audioSource.pitch = Random.Range(0.8f, 1.2f);
+                audioSource.Play();
             }
         }
         else
@@ -175,6 +247,10 @@ public class Movement_Paper : MonoBehaviour
                 longSide = false;
 
                 transfCooldown = 1f;
+
+                audioSource.clip = roll_down;
+                audioSource.pitch = Random.Range(0.8f, 1.2f);
+                audioSource.Play();
 
                 Jump();
             }
@@ -231,7 +307,7 @@ public class Movement_Paper : MonoBehaviour
                 }
                 else
                 {
-                 //   rolledUp_Long.GetComponent<Rigidbody>().velocity -= rolledUp_Long.GetComponent<Rigidbody>().velocity * slowDownSpeed * Time.deltaTime;
+                    //   rolledUp_Long.GetComponent<Rigidbody>().velocity -= rolledUp_Long.GetComponent<Rigidbody>().velocity * slowDownSpeed * Time.deltaTime;
                 }
             }
             else
@@ -239,14 +315,15 @@ public class Movement_Paper : MonoBehaviour
                 if (y_axis != 0)
                 {
                     rolledUp_Short.GetComponent<Rigidbody>().AddForce(flatPaper.transform.right * -1f * Time.fixedDeltaTime * rollSpeed * y_axis);
-                } 
+                }
                 else
                 {
-                 //   rolledUp_Short.GetComponent<Rigidbody>().velocity -= rolledUp_Short.GetComponent<Rigidbody>().velocity * slowDownSpeed * Time.deltaTime;
+                    //   rolledUp_Short.GetComponent<Rigidbody>().velocity -= rolledUp_Short.GetComponent<Rigidbody>().velocity * slowDownSpeed * Time.deltaTime;
                 }
             }
 
             rolledUpRotation();
+
         }
     }
 
@@ -254,54 +331,59 @@ public class Movement_Paper : MonoBehaviour
     {
         if (longSide)
         {
-            Rigidbody longRb = rolledUp_Long.GetComponent<Rigidbody>();
-
-            Vector3 vel_without_y = new Vector3(longRb.velocity.x, 0f, longRb.velocity.z);
-
-            float rotation0 = rotationSpeed * vel_without_y.magnitude;
-            rotation0 = Mathf.Clamp(rotation0, minRotationSpeed, maxRotationSpeed);
-            Vector3 rotation = new Vector3(0f, 90f, 0f) * rotation0 * Time.deltaTime;
-
-            bool forward = (Vector3.Angle(vel_without_y, flatPaper.transform.right * -1) < 10f);
-            bool backward = (Vector3.Angle(vel_without_y, flatPaper.transform.right * 1) < 10f);
-
-            lastDirectionForward = !backward;
-            lastVelocity = vel_without_y.magnitude;
-
-            if ((longRb.velocity.magnitude > criticalSpeed) && (forward) && (x_axis != 0))
+            if (canTurn)
             {
-                rolledUp_Long.transform.Rotate(x_axis * rotation, Space.World);
-            }
-            else if ((longRb.velocity.magnitude > criticalSpeed) && (backward) && (x_axis != 0))
-            {
-                rolledUp_Long.transform.Rotate(rotation * -1f * x_axis, Space.World);
-            }
+                Rigidbody longRb = rolledUp_Long.GetComponent<Rigidbody>();
 
+                Vector3 vel_without_y = new Vector3(longRb.velocity.x, 0f, longRb.velocity.z);
+
+                float rotation0 = rotationSpeed * vel_without_y.magnitude;
+                rotation0 = Mathf.Clamp(rotation0, minRotationSpeed, maxRotationSpeed);
+                Vector3 rotation = new Vector3(0f, 90f, 0f) * rotation0 * Time.fixedDeltaTime;
+
+                bool forward = (Vector3.Angle(vel_without_y, flatPaper.transform.right * -1) < 10f);
+                bool backward = (Vector3.Angle(vel_without_y, flatPaper.transform.right * 1) < 10f);
+
+                lastDirectionForward = !backward;
+                lastVelocity = vel_without_y.magnitude;
+
+                if ((longRb.velocity.magnitude > criticalSpeed) && (forward) && (x_axis != 0))
+                {
+                    rolledUp_Long.transform.Rotate(x_axis * rotation, Space.World);
+                }
+                else if ((longRb.velocity.magnitude > criticalSpeed) && (backward) && (x_axis != 0))
+                {
+                    rolledUp_Long.transform.Rotate(rotation * -1f * x_axis, Space.World);
+                }
+            }
             synchroniseObjects(1f);
         }
         else
         {
-            Rigidbody shortRb = rolledUp_Short.GetComponent<Rigidbody>();
-
-            Vector3 vel_without_y = new Vector3(shortRb.velocity.x, 0f, shortRb.velocity.z);
-
-            float rotation0 = rotationSpeed * vel_without_y.magnitude;
-            rotation0 = Mathf.Clamp(rotation0, minRotationSpeed, maxRotationSpeed);
-            Vector3 rotation = new Vector3(0f, 90f, 0f) * rotation0 * Time.deltaTime;
-
-            bool forward = (Vector3.Angle(vel_without_y, flatPaper.transform.right * -1) < 10f);
-            bool backward = (Vector3.Angle(vel_without_y, flatPaper.transform.right * 1) < 10f);
-
-            lastDirectionForward = !backward;
-            lastVelocity = vel_without_y.magnitude;
-
-            if ((shortRb.velocity.magnitude > criticalSpeed) && (forward) && (x_axis != 0))
+            if (canTurn)
             {
-                rolledUp_Short.transform.Rotate(x_axis * rotation, Space.World);
-            }
-            else if ((shortRb.velocity.magnitude > criticalSpeed) && (backward) && (x_axis != 0))
-            {
-                rolledUp_Short.transform.Rotate(rotation * -1f * x_axis, Space.World);
+                Rigidbody shortRb = rolledUp_Short.GetComponent<Rigidbody>();
+
+                Vector3 vel_without_y = new Vector3(shortRb.velocity.x, 0f, shortRb.velocity.z);
+
+                float rotation0 = rotationSpeed * vel_without_y.magnitude;
+                rotation0 = Mathf.Clamp(rotation0, minRotationSpeed, maxRotationSpeed);
+                Vector3 rotation = new Vector3(0f, 90f, 0f) * rotation0 * Time.fixedDeltaTime;
+
+                bool forward = (Vector3.Angle(vel_without_y, flatPaper.transform.right * -1) < 10f);
+                bool backward = (Vector3.Angle(vel_without_y, flatPaper.transform.right * 1) < 10f);
+
+                lastDirectionForward = !backward;
+                lastVelocity = vel_without_y.magnitude;
+
+                if ((shortRb.velocity.magnitude > criticalSpeed) && (forward) && (x_axis != 0))
+                {
+                    rolledUp_Short.transform.Rotate(x_axis * rotation, Space.World);
+                }
+                else if ((shortRb.velocity.magnitude > criticalSpeed) && (backward) && (x_axis != 0))
+                {
+                    rolledUp_Short.transform.Rotate(rotation * -1f * x_axis, Space.World);
+                }
             }
             synchroniseObjects(2f);
         }
@@ -309,7 +391,8 @@ public class Movement_Paper : MonoBehaviour
     private void checkVelocity()
     {
         Rigidbody RB;
-        if (!flat) {
+        if (!flat)
+        {
             if (longSide)
             {
                 RB = rolledUp_Long.GetComponent<Rigidbody>();
@@ -324,7 +407,8 @@ public class Movement_Paper : MonoBehaviour
                 RB.velocity = RB.velocity.normalized * maxVelocityRoll;
             }
 
-        } else
+        }
+        else
         {
             RB = flatPaper.GetComponent<Rigidbody>();
 
@@ -343,7 +427,7 @@ public class Movement_Paper : MonoBehaviour
         {
             if (y_axis != 0)
             {
-                
+
                 flatPaper.GetComponent<Rigidbody>().AddTorque(flatPaper.transform.right * y_axis * Time.deltaTime * 150f, ForceMode.Acceleration);
             }
 
@@ -352,7 +436,8 @@ public class Movement_Paper : MonoBehaviour
                 if (lastDirectionForward)
                 {
                     flatPaper.GetComponent<Rigidbody>().AddTorque(transform.up * x_axis * Time.deltaTime * 150f, ForceMode.Acceleration);
-                } else
+                }
+                else
                 {
                     flatPaper.GetComponent<Rigidbody>().AddTorque(transform.up * x_axis * Time.deltaTime * -150f, ForceMode.Acceleration);
                 }
@@ -384,7 +469,7 @@ public class Movement_Paper : MonoBehaviour
             float angleRad = (Mathf.PI / 180) * angle;
             flatPaper.GetComponent<Rigidbody>().AddForce(flatPaper.transform.forward * Time.deltaTime * angleRad * 400f, ForceMode.Acceleration);
 
-        } 
+        }
         else
         {
             if (y_axis != 0)
