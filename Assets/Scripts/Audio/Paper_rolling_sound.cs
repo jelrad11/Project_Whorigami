@@ -71,9 +71,9 @@ public class Paper_rolling_sound : MonoBehaviour
 
             Rigidbody RB = script.flatPaper.GetComponent<Rigidbody>();
 
-            float spd = RB.velocity.magnitude * 0.5f;
+            float spd = RB.velocity.magnitude * 0.1f;
 
-            spd = Mathf.Clamp(spd, 0, 0.4f);
+            spd = Mathf.Clamp(spd, 0, 0.1f);
             flySource.pitch = 1f + spd * 0.2f;
             flySource.volume = spd;
 
