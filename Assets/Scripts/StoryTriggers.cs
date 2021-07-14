@@ -11,7 +11,7 @@ public class StoryTriggers : MonoBehaviour
     public int gameStage;
     public string cameraState;
 
-    void Start(){
+    void Awake (){
         mainStoryController = GameObject.Find("StoryController").GetComponent<StoryController>();
     }
     private void OnTriggerEnter(Collider other)
