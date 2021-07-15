@@ -9,6 +9,12 @@ public class PlayerData
     public float[] position;
     public float[] rotation;
     public string cameraState;
+
+    public bool canTransformLong;
+    public bool canTransformShort;
+    public bool canFly;
+    public bool canTurn;
+
     public PlayerData(){
         gameStage = -1;
 
@@ -22,7 +28,7 @@ public class PlayerData
         rotation[1] = 0f;
         rotation[2] = 0f;
     }
-    public PlayerData(int pGameStage, Vector3 pPosition, Vector3 pRotation, string pCameraState){
+    public PlayerData(int pGameStage, Vector3 pPosition, Vector3 pRotation, string pCameraState, bool pCanTransformLong, bool pCanTransformShort, bool pCanFly, bool pCanTurn){
         gameStage = pGameStage;
 
         position = new float[3];
@@ -36,5 +42,10 @@ public class PlayerData
         rotation[2] = pRotation[2];
 
         cameraState = pCameraState;
+
+        canTransformLong = pCanTransformLong;
+        canTransformShort = pCanTransformShort;
+        canFly = pCanFly;
+        canTurn = pCanTurn;
     }
 }
