@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Ground
   - CameraTrigger
+  - storyTrigger
   layers:
   - Default
   - TransparentFX

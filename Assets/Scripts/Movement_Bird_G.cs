@@ -43,8 +43,15 @@ public class Movement_Bird_G : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        stable = false;
-        StartCoroutine("Falling");
+        if (other.tag == "storyTrigger")
+        {
+            return;
+        }
+        else
+        {
+            stable = false;
+            StartCoroutine("Falling");
+        }
     }
 
     private IEnumerator Falling()
