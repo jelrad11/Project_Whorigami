@@ -36,7 +36,8 @@ public class StoryTriggers : MonoBehaviour
     }
 
     private IEnumerator addAbility(){
-        yield return new WaitForSeconds(addAbilityTimer);
+        Data.AbilityAddTimer += addAbilityTimer;
+        yield return new WaitForSeconds(Data.AbilityAddTimer);
         if(addCanTransformLong) movement_Paper.canTransformLong = true;
         if(addCanTransformShort) movement_Paper.canTransformShort = true;
         if(addCanFly) movement_Paper.canFly = true;
