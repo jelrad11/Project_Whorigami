@@ -16,10 +16,20 @@ public class StoryController : MonoBehaviour
 
     public bool audioAvailable = false;
 
+    private bool currentlyTalking = false;
+    private List<int> storyPointQueue;
     private void Start()
     {
         addStoryLines();
     }
+    private void Update()
+    {
+        if(!currentlyTalking && storyPointQueue.Count > 0){
+            callStory(storyPointQueue[0]);
+            storyPointQueue.RemoveAt(0);
+        }
+    }
+
     private void addStoryLines(){
         storyLines = new List<string>();
         storyLines.Add("There once was a not-so-ordinary piece of paper named Dinaa. In fact she was quite the extraordinary piece of paper all things considered for Dinaa could think and therefore, she was sure, she is. She existed!");
@@ -40,16 +50,22 @@ public class StoryController : MonoBehaviour
     }
 
     public void callStory(int storyPoint){
-        float storyPointLength = wordNumber(storyLines[storyPoint]);
-        float subtitleSegments =  Mathf.Ceil(storyPointLength/maxSubtitleLength);
+        if(!currentlyTalking){
+            float storyPointLength = wordNumber(storyLines[storyPoint]);
+            float subtitleSegments =  Mathf.Ceil(storyPointLength/maxSubtitleLength);
 
-        float clipLength = 0f;
-        if(audioAvailable) clipLength = storyAudio[storyPoint].length;
-        else clipLength = storyLineLength[storyPoint];
+            float clipLength = 0f;
+            if(audioAvailable) clipLength = storyAudio[storyPoint].length;
+            else clipLength = storyLineLength[storyPoint];
 
-        float clipSegmentLength = clipLength/subtitleSegments;
+            float clipSegmentLength = clipLength/subtitleSegments;
 
-        StartCoroutine(playStory(storyPoint, subtitleSegments, clipSegmentLength));
+            currentlyTalking = true;
+            StartCoroutine(playStory(storyPoint, subtitleSegments, clipSegmentLength));
+        }
+        else{
+            storyPointQueue.Add(storyPoint);
+        }
     }
 
     IEnumerator playStory(int storyPoint, float subtitleSegments, float clipSegmentLength){
@@ -68,6 +84,7 @@ public class StoryController : MonoBehaviour
             yield return new WaitForSeconds(clipSegmentLength);
         }
         writeSubtitles("");
+        currentlyTalking = false;
     }
     private List<string> splitString(string startString, float subtitleSegments){
 

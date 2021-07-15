@@ -11,6 +11,7 @@ public class StoryTriggers : MonoBehaviour
     public int gameStage;
     public string cameraState;
 
+    public float addAbilityTimer;
     public bool addCanTransformLong;
     public bool addCanTransformShort;
     public bool addCanFly;
@@ -27,15 +28,18 @@ public class StoryTriggers : MonoBehaviour
             gameObject.SetActive(false);
 
             movement_Paper = other.GetComponent<Movement_Paper>();
-
-            if(addCanTransformLong) movement_Paper.canTransformLong = true;
-            if(addCanTransformShort) movement_Paper.canTransformShort = true;
-            if(addCanFly) movement_Paper.canFly = true;
-            if(addCanTurn) movement_Paper.canTurn = true;
             
+            if(addCanTransformLong || addCanTransformShort || addCanFly || addCanTurn) StartCoroutine(addAbility());
 
             SaveSystem.SavePlayer(gameStage, saveLocation, saveRotation, cameraState, movement_Paper.canTransformLong, movement_Paper.canTransformShort, movement_Paper.canFly, movement_Paper.canTurn);
         }
     }
 
+    private IEnumerator addAbility(){
+        yield return new WaitForSeconds(addAbilityTimer);
+        if(addCanTransformLong) movement_Paper.canTransformLong = true;
+        if(addCanTransformShort) movement_Paper.canTransformShort = true;
+        if(addCanFly) movement_Paper.canFly = true;
+        if(addCanTurn) movement_Paper.canTurn = true;
+    }
 }
