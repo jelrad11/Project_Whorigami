@@ -48,16 +48,16 @@ public class StoryController : MonoBehaviour
         /*12*/ storyLines.Add("And yet just as Dinaa had been on the brink of giving up she saw it, the solution, it was just outside the window. She could be like the leaves, could she not? Unfurl her body within the air and gently fall to the other side.");
         /*13*/ storyLines.Add("Yes! This was working, she would make it, she was a genius!");
         /*14*/ storyLines.Add("And once again, she emerged victorious, she was unstoppable!");
-        /*15*/ storyLines.Add("Well, what now, this was everything wasn’t it? There wasn’t really anywhere else she could go here, was there? And yet, she still hadn't found her identity, her purpose. So perhaps, it laid outside, but how would she get outside…? Dinaa did not have an answer to that. It might be possible for her to get outside if she imitated something else again, like she’d done with the leaf, but what could possibly get her out of here… and that is when she saw it, a bird. She could become a bird and attain true freedom, just like a bird unbound by the unseen chains of gravity. And so Dinaa folded herself, determined to become free.");
+        /*15*/ storyLines.Add("Well, what now, this was everything wasn’t it? There wasn’t really anywhere else she could go here, was there? And yet, she still hadn't found her identity, her purpose. So perhaps, it laid outside, but how would she get outside…?");
+        /*16*/ storyLines.Add("Dinaa did not have an answer to that. It might be possible for her to get outside if she imitated something else again, like she’d done with the leaf, but what could possibly get her out of here… and that is when she saw it, a bird.");
+        /*17*/ storyLines.Add("She could become a bird and attain true freedom, just like a bird unbound by the unseen chains of gravity.And so Dinaa folded herself, determined to become free. And then she had done it, she had become a bird");
 
         // this is where the story lines for the bird scene start, index numbers 15-? -Kai
-        /*16*/ storyLines.Add("She had done it! She had become like a bird. Gliding freely through the air. But... what did one do as a bird? One of the birds she had seen while folding herself up had followed these red flags, so perhaps following them as well would reveal more to her.");
-        /*17*/ storyLines.Add("She’d have to lean into the direction she wanted to go,so this time it was down and to the left.");
-        /*18*/ storyLines.Add("And as she titled down Dinaa realized that she became faster when going downwards, this would surely come in handy");
-        /*19*/ storyLines.Add("Ah these flags seemed to lead back into the tree, she’d have to slow down if she wanted to get in without any troubles.");
-        /*20*/ storyLines.Add("Lorem Ipsum");
-        /*21*/ storyLines.Add("Lorem Ipsum");
-        /*22*/ storyLines.Add("Lorem Ipsum");
+        /*18*/ storyLines.Add("Now... what did one do as a bird? Perhaps following them as well would reveal more to her.");
+        /*19*/ storyLines.Add("She’d have to lean into the direction she wanted to go,so this time it was down and to the left.");
+        /*20*/ storyLines.Add("And as she titled down Dinaa realized that she became faster when going downwards, this would surely come in handy");
+        /*21*/ storyLines.Add("Ah these flags seemed to lead back into the tree, she’d have to slow down if she wanted to get in without any troubles.");
+        /*22*/ storyLines.Add("Now where to next, it seemed like the red flags led into the orange flags so that seemed to be the next logical step.");
         /*23*/ storyLines.Add("Lorem Ipsum");
         /*24*/ storyLines.Add("Lorem Ipsum");
         /*25*/ storyLines.Add("Lorem Ipsum");
@@ -66,6 +66,8 @@ public class StoryController : MonoBehaviour
         /*28*/ storyLines.Add("Lorem Ipsum");
         /*29*/ storyLines.Add("Lorem Ipsum");
         /*30*/ storyLines.Add("Lorem Ipsum");
+        /*31*/ storyLines.Add("Lorem Ipsum");
+        /*32*/ storyLines.Add("Lorem Ipsum");
 
     }
 
