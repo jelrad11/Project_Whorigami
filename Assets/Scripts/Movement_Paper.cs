@@ -69,6 +69,8 @@ public class Movement_Paper : MonoBehaviour
 
     void Update()
     {
+        if(canTurn) unrestrictRb();
+        
         getInput();
         rollUp();
 

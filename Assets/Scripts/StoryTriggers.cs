@@ -32,6 +32,7 @@ public class StoryTriggers : MonoBehaviour
             if(addCanTransformShort) movement_Paper.canTransformShort = true;
             if(addCanFly) movement_Paper.canFly = true;
             if(addCanTurn) movement_Paper.canTurn = true;
+            
 
             SaveSystem.SavePlayer(gameStage, saveLocation, saveRotation, cameraState, movement_Paper.canTransformLong, movement_Paper.canTransformShort, movement_Paper.canFly, movement_Paper.canTurn);
         }
