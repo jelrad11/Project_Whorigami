@@ -18,16 +18,25 @@ public class StoryTriggers : MonoBehaviour
     public bool addCanTurn;
 
     public Movement_Paper movement_Paper;
-    void Awake (){
+    void Awake () {
         mainStoryController = GameObject.Find("StoryController").GetComponent<StoryController>();
     }
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.tag == "Player"){
             mainStoryController.callStory(storyPoint);
-            gameObject.SetActive(false);
 
-            movement_Paper = other.GetComponent<Movement_Paper>();
+            if (addAbilityTimer == 0f)
+            {
+                gameObject.SetActive(false);
+            } else
+            {
+                gameObject.GetComponent<Collider>().enabled = false;
+                foreach (Transform child in transform)
+                    child.gameObject.SetActive(false);
+            }
+
+            movement_Paper = other.GetComponentInParent<Movement_Paper>();
             
             if(addCanTransformLong || addCanTransformShort || addCanFly || addCanTurn) StartCoroutine(addAbility());
 
@@ -42,5 +51,7 @@ public class StoryTriggers : MonoBehaviour
         if(addCanTransformShort) movement_Paper.canTransformShort = true;
         if(addCanFly) movement_Paper.canFly = true;
         if(addCanTurn) movement_Paper.canTurn = true;
+        
+        if(addAbilityTimer != 0f) gameObject.SetActive(false);
     }
 }
