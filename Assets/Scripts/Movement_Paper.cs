@@ -65,6 +65,7 @@ public class Movement_Paper : MonoBehaviour
     public void unrestrictRb()
     {
         rolledUp_Long.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+        flatPaper.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
     }
 
     void Update()
@@ -80,7 +81,9 @@ public class Movement_Paper : MonoBehaviour
         }
 
         transfCooldown -= Time.deltaTime;
-
+        
+        // debug test
+        /*
         if (Input.GetKeyDown(KeyCode.G))
         {
             unrestrictRb();
@@ -100,11 +103,12 @@ public class Movement_Paper : MonoBehaviour
         {
             canTransformShort = true;
         }
-
+        
         if (Input.GetKeyDown(KeyCode.U))
         {
             canFly = true;
         }
+        */
     }
 
     private void FixedUpdate()
