@@ -53,21 +53,25 @@ public class StoryController : MonoBehaviour
         /*14*/ storyLines.Add("She could become a bird and attain true freedom, just like a bird unbound by the unseen chains of gravity.And so Dinaa folded herself, determined to become free. And then she had done it, she had become a bird");
 
         // this is where the story lines for the bird scene start, index numbers 15-? -Kai
-        /*15*/ storyLines.Add("Now... what did one do as a bird? Perhaps following them as well would reveal more to her.");
-        /*16*/ storyLines.Add("She’d have to lean into the direction she wanted to go,so this time it was down and to the left.");
-        /*17*/ storyLines.Add("And as she titled down Dinaa realized that she became faster when going downwards, this would surely come in handy");
-        /*18*/ storyLines.Add("Ah these flags seemed to lead back into the tree, she’d have to slow down if she wanted to get in without any troubles.");
-        /*19*/ storyLines.Add("Now where to next, it seemed like the red flags led into the orange flags so that seemed to be the next logical step.");
-        /*20*/ storyLines.Add("sdfdsfs");
-        /*21*/ storyLines.Add("Lorem Ipsum");
-        /*22*/ storyLines.Add("Lorem Ipsum");
-        /*23*/ storyLines.Add("Lorem Ipsum");
-        /*24*/ storyLines.Add("Lorem Ipsum");
-        /*25*/ storyLines.Add("Lorem Ipsum");
-        /*26*/ storyLines.Add("Lorem Ipsum");
-        /*27*/ storyLines.Add("Lorem Ipsum");
-        /*28*/ storyLines.Add("Lorem Ipsum");
-        /*29*/ storyLines.Add("Lorem Ipsum");
+        /*15*/ storyLines.Add("Now... what did one do as a bird? Perhaps following these red flags would reveal more to her.");
+        /*16*/ storyLines.Add("She’d have to lean into the direction she wanted to go, so this time it was down and to the left.");
+        /*17*/ storyLines.Add("And as she tilted down Dinaa realized that she became faster when going downwards.");
+        /*18*/ storyLines.Add("Ah, these flags seemed to lead back into the tree, where they shifted towards an orange colour. Therefore, the orange flags were next.");
+        /*19*/ storyLines.Add("As she flew, Dinaa could not help but think that these flags might be... a test... meant to see if she could be a bird.");
+        /*20*/ storyLines.Add("The next part was already in sight, a tire swing, and then the blue flags.");
+        /*21*/ storyLines.Add("And she was through, this was easy, now she just had to climb back up into the air, proving that she, just like a bird, could defy gravity itself.");
+        /*22*/ storyLines.Add("Alright, these flags led back through the tree again and into the purple flags.");
+        /*23*/ storyLines.Add("So far, Dinaa felt like she was doing quite well. If things continued like this, then surely, she really would be able to become a bird." +
+                   "But was this really all that birds did? Following flags? There had to be more, with all this freedom they could do anything.");
+        /*24*/ storyLines.Add("Speaking of flags, next up were the yellow flags.");
+        /*25*/ storyLines.Add("This seemed like it would be the most difficult path yet. Perhaps, it was even the last.");
+        /*26*/ storyLines.Add("So what would she do after following these flags. Perhaps she would fly around freely? That..  actually sounded quite appealing.");
+
+        /*27*/ storyLines.Add("Ah, it seemed like there was one final test left, although perhaps she ought to collect herself first. ");
+        /*28*/ storyLines.Add("She ccould always return at a later point and explore the tree a bit");
+        /*29*/ storyLines.Add("This was it, the final test. Into the canopy in an attempt to break free completely.");
+        //add ending still, depends on what everybody wants though
+        //place I was using for text to speech voicelines apparently has a limit to how many lines Im allowed to download a day
 
     }
 
