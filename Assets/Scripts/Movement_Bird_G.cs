@@ -29,7 +29,14 @@ public class Movement_Bird_G : MonoBehaviour
 
     public GameObject bird;
 
+    // crashing stuff
     private bool stable = true;
+    private bool justCrashed = false;
+
+    // audio stuff
+    public AudioSource flyingSource;
+    public AudioSource glideSource;
+    public AudioSource impactSource;
 
     // Update is called once per frame
     void Update()
@@ -37,14 +44,37 @@ public class Movement_Bird_G : MonoBehaviour
         if (stable)
         {
             flyG();
+
+            flyingSource.volume = 1f * Mathf.Clamp(0.05f + 0.005f * movementSpeed * movementSpeed / (3), 0.05f, 0.1f);
+            flyingSource.pitch = 1.2f * Mathf.Clamp(0.8f + (movementSpeed * movementSpeed) / (3), 0.8f, 1.2f);
+
+
+            glideSource.volume = 4 * Mathf.Clamp(0.04f + 0.01f * movementSpeed * movementSpeed / (3), 0.05f, 0.1f);
+            glideSource.pitch = Mathf.Clamp(0.8f + (movementSpeed * movementSpeed) / (3), 0.8f, 1.2f);
         }
+        else
+        {
+            flyingSource.volume = Mathf.Lerp(flyingSource.volume, 0.05f * 1f, Time.deltaTime);
+            glideSource.volume = Mathf.Lerp(flyingSource.volume, 0.05f * 4f, Time.deltaTime);
+        }
+
         //   Debug.Log(stable);
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        stable = false;
-        StartCoroutine("Falling");
+        if (other.tag == "storyTrigger")
+        {
+            return;
+        }
+        else if (justCrashed == false)
+        {
+            stable = false;
+            impactSource.volume = Mathf.Clamp(0.2f * movementSpeed * movementSpeed / (3), 0.2f, 0.6f);
+            impactSource.pitch = Mathf.Clamp(0.8f + (3) / (movementSpeed * movementSpeed), 0.8f, 1.2f);
+            impactSource.Play();
+            StartCoroutine("Falling");
+        }
     }
 
     private IEnumerator Falling()
@@ -53,14 +83,20 @@ public class Movement_Bird_G : MonoBehaviour
         while (falltime < 1f)
         {
             falltime += Time.deltaTime;
-
-
-
             yield return null;
         }
         stable = true;
+        justCrashed = true;
         movementSpeed = minSpeed;
         bird.transform.Rotate(0, 180, 0, Space.Self);
+
+        while (falltime < 1.2f)
+        {
+            falltime += Time.deltaTime;
+            yield return null;
+        }
+        justCrashed = false;
+
         yield break;
     }
 
@@ -83,13 +119,15 @@ public class Movement_Bird_G : MonoBehaviour
         bool S = false;
         bool A = false;
         bool D = false;
-        bool spacebar = false;
+        bool shift = false;
+        bool control = false;
 
         if (Input.GetKey(KeyCode.W)) W = true;
         if (Input.GetKey(KeyCode.S)) S = true;
         if (Input.GetKey(KeyCode.A)) A = true;
         if (Input.GetKey(KeyCode.D)) D = true;
-        if (Input.GetKey(KeyCode.Space)) spacebar = true;
+        if (Input.GetKey(KeyCode.LeftShift)) shift = true;
+        if (Input.GetKey(KeyCode.LeftControl)) control = true;
 
         float horizontalInput = Input.GetAxis("Horizontal");
         //Get the value of the Horizontal input axis.
@@ -97,6 +135,17 @@ public class Movement_Bird_G : MonoBehaviour
         float verticalInput = Input.GetAxis("Vertical");
         //Get the value of the Vertical input axis.
 
+        float boost = Input.GetAxis("RightTriggerAxis") - Input.GetAxis("LeftTriggerAxis");
+
+        if (shift && !control)
+        {
+            boost = 1f;
+        }
+
+        if (!shift && control)
+        {
+            boost = -1f;
+        }
 
 
         // apply vertical movement,
@@ -113,7 +162,7 @@ public class Movement_Bird_G : MonoBehaviour
             verticalInput = -1f;
         }
 
-        if (verticalInput!=0)
+        if (verticalInput != 0)
         {
             vertCurrentRotationSpeed += verticalInput * vertRotAcc * Time.deltaTime;
         }
@@ -128,7 +177,7 @@ public class Movement_Bird_G : MonoBehaviour
         }
 
         vertCurrentRotationSpeed = Mathf.Clamp(vertCurrentRotationSpeed, -vertMaxRotationSpeed, vertMaxRotationSpeed);
-        
+
         // apply left or right turning movement
 
         if (A && !D)
@@ -143,7 +192,7 @@ public class Movement_Bird_G : MonoBehaviour
             horizontalInput = 1f;
         }
 
-        if (horizontalInput!=0)
+        if (horizontalInput != 0)
         {
             horiCurrentRotationSpeed += horizontalInput * horiRotAcc * Time.deltaTime;
         }
@@ -197,17 +246,11 @@ public class Movement_Bird_G : MonoBehaviour
         float angleRad = (Mathf.PI / 180) * angle;
         movementSpeed += Mathf.Sin(angleRad) * grav * Time.deltaTime;
 
-        
-        if (spacebar)
-        {
-            boostMultiplier = 3f;
-        } else
-        {
-            boostMultiplier = 1f;
-        }
 
-        movementSpeed += basicFlap * boostMultiplier * (maxSpeed/(movementSpeed-0.2f)) * Time.deltaTime;
-        movementSpeed = Mathf.Clamp(movementSpeed,minSpeed,maxSpeed);
+        boostMultiplier = boost * 6f;
+
+        movementSpeed += basicFlap * boostMultiplier * (maxSpeed / (movementSpeed - 0.2f)) * Time.deltaTime;
+        movementSpeed = Mathf.Clamp(movementSpeed, minSpeed, maxSpeed);
         gameObject.transform.position += dir * movementSpeed * Time.deltaTime;
 
     }

@@ -7,11 +7,11 @@ public class SaveSystem
     private static string path = Application.persistentDataPath + "player.cglWhorigami";
     private static string optPath = Application.persistentDataPath + "options.cglWhorigami";
 
-    public static void SavePlayer(int gameStage, Vector3 position, Vector3 rotation, string cameraState){
+    public static void SavePlayer(int gameStage, Vector3 position, Vector3 rotation, string cameraState, bool canTransformLong, bool canTransformShort, bool canFly, bool canTurn){
         BinaryFormatter formatter = new BinaryFormatter();
         FileStream stream = new FileStream(path, FileMode.Create);
 
-        PlayerData data = new PlayerData(gameStage, position, rotation, cameraState);
+        PlayerData data = new PlayerData(gameStage, position, rotation, cameraState, canTransformLong, canTransformShort, canFly, canTurn);
 
         formatter.Serialize(stream, data);
         stream.Close();

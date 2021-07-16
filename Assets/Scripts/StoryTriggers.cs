@@ -11,17 +11,52 @@ public class StoryTriggers : MonoBehaviour
     public int gameStage;
     public string cameraState;
 
-    void Awake (){
+    public float addAbilityTimer;
+    public bool addCanTransformLong;
+    public bool addCanTransformShort;
+    public bool addCanFly;
+    public bool addCanTurn;
+
+    public Movement_Paper movement_Paper;
+    void Awake () {
         mainStoryController = GameObject.Find("StoryController").GetComponent<StoryController>();
     }
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.tag == "Player"){
             mainStoryController.callStory(storyPoint);
-            gameObject.SetActive(false);
 
-            SaveSystem.SavePlayer(gameStage, saveLocation, saveRotation, cameraState);
+            if (addAbilityTimer == 0f)
+            {
+                gameObject.SetActive(false);
+            } else
+            {
+                gameObject.GetComponent<Collider>().enabled = false;
+                foreach (Transform child in transform)
+                    child.gameObject.SetActive(false);
+            }
+
+            movement_Paper = other.GetComponentInParent<Movement_Paper>();
+            
+            if(addCanTransformLong || addCanTransformShort || addCanFly || addCanTurn) StartCoroutine(addAbility());
+
+            //SaveSystem.SavePlayer(gameStage, saveLocation, saveRotation, cameraState, movement_Paper.canTransformLong, movement_Paper.canTransformShort, movement_Paper.canFly, movement_Paper.canTurn);
         }
     }
 
+    private IEnumerator addAbility(){
+        Data.AbilityAddTimer += addAbilityTimer;
+        yield return new WaitForSeconds(Data.AbilityAddTimer);
+
+        Data.AbilityAddTimer = 0f;
+        if(addCanTransformLong) movement_Paper.canTransformLong = true;
+        if(addCanTransformShort) movement_Paper.canTransformShort = true;
+        if(addCanFly) movement_Paper.canFly = true;
+        if (addCanTurn)
+        {
+            movement_Paper.canTurn = true;
+            movement_Paper.unrestrictRb();
+        }
+        if(addAbilityTimer != 0f) gameObject.SetActive(false);
+    }
 }
