@@ -156,7 +156,7 @@ public class Movement_Paper : MonoBehaviour
 
         if (canTransformShort)
         {
-            transform_up = (Input.GetAxis("DPadVertical") > 0 || Input.GetButtonDown("Button_bot"));
+            transform_up = (Input.GetAxis("DPadVertical") > 0 || Input.GetButtonDown("Button_bot") || Input.GetKeyDown(KeyCode.Q));
             transform_down = (Input.GetAxis("DPadVertical") < 0 || Input.GetButtonDown("Button_bot"));
         }
         else
@@ -167,7 +167,7 @@ public class Movement_Paper : MonoBehaviour
 
         if (canTransformLong)
         {
-            transform_right = (Input.GetAxis("DPadHorizontal") > 0 || Input.GetButtonDown("Button_left"));
+            transform_right = (Input.GetAxis("DPadHorizontal") > 0 || Input.GetButtonDown("Button_left") || Input.GetKeyDown(KeyCode.E));
             transform_left = (Input.GetAxis("DPadHorizontal") < 0 || Input.GetButtonDown("Button_left"));
         }
         else
