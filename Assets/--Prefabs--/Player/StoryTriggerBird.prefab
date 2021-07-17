@@ -91,7 +91,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 987169438075635646}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -113,3 +113,9 @@ MonoBehaviour:
   saveRotation: {x: 0, y: 0, z: 0}
   gameStage: 0
   cameraState: 
+  addAbilityTimer: 0
+  addCanTransformLong: 0
+  addCanTransformShort: 0
+  addCanFly: 0
+  addCanTurn: 0
+  movement_Paper: {fileID: 0}
