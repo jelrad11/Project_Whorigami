@@ -22,6 +22,7 @@ public class StoryController : MonoBehaviour
     private void Start()
     {
         addStoryLines();
+        applySettings();
     }
     private void Update()
     {
@@ -35,8 +36,11 @@ public class StoryController : MonoBehaviour
     }
     public void applySettings(){
         OptionData optData = SaveSystem.LoadOptions();
-        audioSource.volume = optData.audio;
-        subtitleBox.fontSize = 25f + (10 * optData.subtitles);
+        if(optData != null) {
+            subtitleBox.fontSize = 25f + (10 * optData.subtitles);
+            audioSource.volume = optData.audio;
+        }
+
     }
     private void addStoryLines(){
         storyLines = new List<string>();
