@@ -25685,23 +25685,23 @@ PrefabInstance:
     - target: {fileID: 863487330859391249, guid: c3b1103e3fe2e704499cae2e255ea660, type: 3}
       propertyPath: storyAudio.Array.data[0]
       value: 
-      objectReference: {fileID: 8300000, guid: 40ed8c13bace0064885005c7264dc540, type: 3}
+      objectReference: {fileID: 8300000, guid: 3c7e0528b81850846b8a8ba8631ce5d6, type: 3}
     - target: {fileID: 863487330859391249, guid: c3b1103e3fe2e704499cae2e255ea660, type: 3}
       propertyPath: storyAudio.Array.data[1]
       value: 
-      objectReference: {fileID: 8300000, guid: 671141e245a129b4086242624e3d0f6a, type: 3}
+      objectReference: {fileID: 8300000, guid: 321fab30ee150124e94a8e8eb9380a1d, type: 3}
     - target: {fileID: 863487330859391249, guid: c3b1103e3fe2e704499cae2e255ea660, type: 3}
       propertyPath: storyAudio.Array.data[2]
       value: 
-      objectReference: {fileID: 8300000, guid: f607a617a3f1be74abea270335267232, type: 3}
+      objectReference: {fileID: 8300000, guid: 804977022a9cb094e9a7462386512bcd, type: 3}
     - target: {fileID: 863487330859391249, guid: c3b1103e3fe2e704499cae2e255ea660, type: 3}
       propertyPath: storyAudio.Array.data[3]
       value: 
-      objectReference: {fileID: 8300000, guid: ea779ea8191da924fb282c4503ee2b18, type: 3}
+      objectReference: {fileID: 8300000, guid: f4e5a2908b8ee2e42827a7bbff0c0a41, type: 3}
     - target: {fileID: 863487330859391249, guid: c3b1103e3fe2e704499cae2e255ea660, type: 3}
       propertyPath: storyAudio.Array.data[4]
       value: 
-      objectReference: {fileID: 8300000, guid: 2f40fe86fcd67494c9ce7fe5abbc0458, type: 3}
+      objectReference: {fileID: 8300000, guid: b46e2c563db1b8d4089c6d58a15e6a2d, type: 3}
     - target: {fileID: 863487330859391249, guid: c3b1103e3fe2e704499cae2e255ea660, type: 3}
       propertyPath: storyAudio.Array.data[5]
       value: 
@@ -25709,39 +25709,39 @@ PrefabInstance:
     - target: {fileID: 863487330859391249, guid: c3b1103e3fe2e704499cae2e255ea660, type: 3}
       propertyPath: storyAudio.Array.data[6]
       value: 
-      objectReference: {fileID: 8300000, guid: 36e3f5886d545cd41bd051ab71122c4c, type: 3}
+      objectReference: {fileID: 8300000, guid: 685a327b9f3504b4ab7d28ae29537d04, type: 3}
     - target: {fileID: 863487330859391249, guid: c3b1103e3fe2e704499cae2e255ea660, type: 3}
       propertyPath: storyAudio.Array.data[7]
       value: 
-      objectReference: {fileID: 8300000, guid: 20c04a504795bc94ba4d657b01cee0db, type: 3}
+      objectReference: {fileID: 8300000, guid: d4671144bf137e048b8fca73ba2be371, type: 3}
     - target: {fileID: 863487330859391249, guid: c3b1103e3fe2e704499cae2e255ea660, type: 3}
       propertyPath: storyAudio.Array.data[8]
       value: 
-      objectReference: {fileID: 8300000, guid: c63acc168e654e04bbae0cb08a83b13d, type: 3}
+      objectReference: {fileID: 8300000, guid: 1a49fd61ba9d4514285870446bd807bf, type: 3}
     - target: {fileID: 863487330859391249, guid: c3b1103e3fe2e704499cae2e255ea660, type: 3}
       propertyPath: storyAudio.Array.data[9]
       value: 
-      objectReference: {fileID: 8300000, guid: a9a778e53d258f143980449cbde4148a, type: 3}
+      objectReference: {fileID: 8300000, guid: 8af8cb7bcb1d52f4789697fde9eb09c6, type: 3}
     - target: {fileID: 863487330859391249, guid: c3b1103e3fe2e704499cae2e255ea660, type: 3}
       propertyPath: storyAudio.Array.data[10]
       value: 
-      objectReference: {fileID: 8300000, guid: f53e6d33f83ceff42b4b4cb1656c96fb, type: 3}
+      objectReference: {fileID: 8300000, guid: b368a0a47780aa94683986b5c2a4f39e, type: 3}
     - target: {fileID: 863487330859391249, guid: c3b1103e3fe2e704499cae2e255ea660, type: 3}
       propertyPath: storyAudio.Array.data[11]
       value: 
-      objectReference: {fileID: 8300000, guid: acb15477d84107c4f8a0dcf06af28a09, type: 3}
+      objectReference: {fileID: 8300000, guid: 1e32a42db6118bd42b783a5c9cdfa4bf, type: 3}
     - target: {fileID: 863487330859391249, guid: c3b1103e3fe2e704499cae2e255ea660, type: 3}
       propertyPath: storyAudio.Array.data[12]
       value: 
-      objectReference: {fileID: 8300000, guid: 3c8227c4838078448a241b36506f8dab, type: 3}
+      objectReference: {fileID: 8300000, guid: c9c9260086dcd5b4bb85c334f596a137, type: 3}
     - target: {fileID: 863487330859391249, guid: c3b1103e3fe2e704499cae2e255ea660, type: 3}
       propertyPath: storyAudio.Array.data[13]
       value: 
-      objectReference: {fileID: 8300000, guid: 17595bfe5bae21d4c84a9c815a9614e2, type: 3}
+      objectReference: {fileID: 8300000, guid: 97f875fb330bbf545aaf25677fe0084b, type: 3}
     - target: {fileID: 863487330859391249, guid: c3b1103e3fe2e704499cae2e255ea660, type: 3}
       propertyPath: storyAudio.Array.data[14]
       value: 
-      objectReference: {fileID: 8300000, guid: 3d55343347563f64aa68ee1ac422803b, type: 3}
+      objectReference: {fileID: 8300000, guid: 8a22075b912a1d44a9529fc83eeebc81, type: 3}
     - target: {fileID: 3486770471027317939, guid: c3b1103e3fe2e704499cae2e255ea660, type: 3}
       propertyPath: m_SizeDelta.x
       value: 1400
@@ -95802,7 +95802,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Path: {fileID: 1994915574}
-  m_PathPosition: -3249.2
+  m_PathPosition: -3255.2
   m_PositionUnits: 0
   m_PathOffset: {x: 0.35, y: -1.28, z: 0.47}
   m_XDamping: 0
