@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
 
 public class MainMenu : MonoBehaviour
 {
@@ -12,14 +13,15 @@ public class MainMenu : MonoBehaviour
 
     private bool inOptions = false;
     public List<GameObject> buttonPins;
+    public List<TMP_Text> buttonText;
     public int currentButton;
     public int maxButtons;
 
 
     public List<GameObject> sliderPins;
+    public List<Slider> sliders;
     public int currentSlider;
     public int maxSliders;
-    public List<Slider> sliders;
     
     public float bSC = 0.5f;
     private float buttonSwitchCooldown = 0.1f;
@@ -27,6 +29,9 @@ public class MainMenu : MonoBehaviour
     public float sliderValueChange = 0.1f;
     public float slCD = 0.2f;
     private float sliderCooldown = 0.2f;
+
+    public float textSize_normal;
+    public float textSize_big;
 
     private void Update()
     {
@@ -39,6 +44,7 @@ public class MainMenu : MonoBehaviour
             sliderInteraction();
             if(Input.GetButtonDown("Cancel")) OptionTrigger();
         }
+
         if(Input.GetButtonDown("Submit") && !inOptions){
             switch(currentButton){
                 case 0:
@@ -62,14 +68,22 @@ public class MainMenu : MonoBehaviour
         Application.Quit();
     }
     public void Continue(){
-        
+        PlayerData data = SaveSystem.LoadPlayer();
+        Data.LoadSave = true;
+        if(data.gameStage == 0)
+            SceneManager.LoadScene("JellyScene");
+        else if(data.gameStage == 1)
+            SceneManager.LoadScene("Bird Scene-Final");
     }
     public void NewGame(){
-
+        Data.LoadSave = false;
+        SaveSystem.Deletesave();
+        SceneManager.LoadScene("JellyScene");
     }
     public void OptionTrigger(){
         if(inOptions){
             inOptions = false;
+            SaveSystem.SaveOptions(sliders[0].value, sliders[1].value);
             options.SetActive(false);
             mainMenu.SetActive(true);
         }
@@ -81,10 +95,14 @@ public class MainMenu : MonoBehaviour
     }
     public void hoverButton(int button){ //0 = Save; 1 = Resume; 2 = Restart Level; 3 = Exit; 4 = Subtitles; 5 = Music
         for(int i = 0; i < maxButtons; i++){
-            if(i == button)
+            if(i == button){
                 buttonPins[i].SetActive(true);
-            else
+                buttonText[i].fontSize = textSize_big;
+            }
+            else{
                 buttonPins[i].SetActive(false);
+                buttonText[i].fontSize = textSize_normal;
+            }
         }
 
     }

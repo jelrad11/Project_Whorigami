@@ -6,6 +6,18 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: d1c3109bdb54ad54c8a2b2838528e640
+    path: Assets/Scenes/MainMenu.unity
+    guid: 14f4b12bb82c22a49887f6fa9e7ef5aa
+  - enabled: 1
+    path: Assets/Scenes/JellyScene.unity
+    guid: e68a396fb9d321e4d84c99c5d482fb88
+  - enabled: 1
+    path: Assets/Scenes/TransitionOne.unity
+    guid: aa0fbfafaf0f24348ae8b919669f352c
+  - enabled: 1
+    path: Assets/Scenes/Bird Scene-Final.unity
+    guid: b74945437bc29f64abb00f0cb6b7ce6e
+  - enabled: 1
+    path: Assets/Scenes/TransitionTwo.unity
+    guid: 11ed328dbcdc7be42a4afe3ae0f08022
   m_configObjects: {}
