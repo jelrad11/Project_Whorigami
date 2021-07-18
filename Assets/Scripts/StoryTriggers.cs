@@ -19,9 +19,8 @@ public class StoryTriggers : MonoBehaviour
     public bool addCanTransformShort;
     public bool addCanFly;
     public bool addCanTurn;
-
-
     
+    public bool useMovementPaper;
     public Movement_Paper movement_Paper;
     void Awake () {
         mainStoryController = GameObject.Find("StoryController").GetComponent<StoryController>();
@@ -39,18 +38,16 @@ public class StoryTriggers : MonoBehaviour
                 gameObject.GetComponent<Collider>().enabled = false;
                 foreach (Transform child in transform)
                     child.gameObject.SetActive(false);
-                
-
             }
             nextTrigger.SetActive(true);
             if(deactiveThisTrigger) specialTrigger.SetActive(false);
             
-            movement_Paper = other.GetComponentInParent<Movement_Paper>();
-            
-            if(addCanTransformLong || addCanTransformShort || addCanFly || addCanTurn) StartCoroutine(addAbility());
+            if(useMovementPaper){
+                movement_Paper = other.GetComponentInParent<Movement_Paper>();
+                if(addCanTransformLong || addCanTransformShort || addCanFly || addCanTurn) StartCoroutine(addAbility());
+            }
 
-            if(gameStage == 0) SaveSystem.SavePlayer(gameStage, saveLocation, saveRotation, cameraState, movement_Paper.canTransformLong, movement_Paper.canTransformShort, movement_Paper.canFly, movement_Paper.canTurn);
-            else SaveSystem.SavePlayer(gameStage, saveLocation, saveRotation, "null", movement_Paper.canTransformLong, movement_Paper.canTransformShort, movement_Paper.canFly, movement_Paper.canTurn);
+            //SaveSystem.SavePlayer(gameStage, saveLocation, saveRotation, cameraState, movement_Paper.canTransformLong, movement_Paper.canTransformShort, movement_Paper.canFly, movement_Paper.canTurn);
         }
     }
 
