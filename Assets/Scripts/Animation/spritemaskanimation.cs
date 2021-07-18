@@ -37,6 +37,8 @@ public class spritemaskanimation : MonoBehaviour
     [Header("Time between Frames")]
     [Tooltip("Total Time between Frames if it is not derived from any Animator")]
     public float TimeBetweenFrames; // Time Between Frames
+
+    public float TimeOffset;
     void Start()
     {
         StartCoroutine(AnimateSpriteMask()); // We start the animation as soon as the Game runs
@@ -65,6 +67,8 @@ public class spritemaskanimation : MonoBehaviour
                     // We wait for a certain period of Time between Frames
                     yield return new WaitForSeconds(TimeBetweenFrames);
                 }
+
+                yield return new WaitForSeconds(TimeOffset);
                 yield return new WaitForEndOfFrame();
             }
             // Now we check for the else statement that runs if the animation is to be derived from Animator, i.e, DeriveFromSpriteRenderer is true
