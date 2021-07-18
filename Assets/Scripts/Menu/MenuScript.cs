@@ -23,7 +23,8 @@ public class MenuScript : MonoBehaviour
     private float sliderCooldown = 0.2f;
     private bool pauseMenuActive = true;
 
-    
+    public StoryController storyController;
+    public List<AudioSource> audioSources;
     private void Update()
     {
         buttonSwitchCooldown -= Time.deltaTime;
@@ -55,7 +56,12 @@ public class MenuScript : MonoBehaviour
     }
 
     private void applySettings(){
+        storyController.applySettings();
+        OptionData optData = SaveSystem.LoadOptions();
 
+        for(int i = 0; i < audioSources.Count; i++){
+            audioSources[i].volume = optData.audio;
+        }
     }
     
     public void changeToMenu(){
@@ -72,6 +78,10 @@ public class MenuScript : MonoBehaviour
             Data.LoadSave = false;
             SceneManager.LoadScene("JellyScene");
             break;
+            case 1:
+            Data.LoadSave = false;
+            SceneManager.LoadScene("Bird Scene-Final");
+            break;
         }
     }
     public void loadLatest(){
@@ -79,6 +89,10 @@ public class MenuScript : MonoBehaviour
             case 0:
             Data.LoadSave = true;
             SceneManager.LoadScene("JellyScene");
+            break;
+            case 1:
+            Data.LoadSave = true;
+            SceneManager.LoadScene("Bird Scene-Final");
             break;
         }
     }
