@@ -41,7 +41,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 987169438075635646}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 2534964839176971238, guid: 0d0f4e7400d8e75419431039b523c924, type: 3}
 --- !u!23 &7181161855404760915
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -109,6 +109,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   storyPoint: 0
+  nextTrigger: {fileID: 0}
+  deactiveThisTrigger: 0
+  specialTrigger: {fileID: 0}
   saveLocation: {x: 0, y: 0, z: 0}
   saveRotation: {x: 0, y: 0, z: 0}
   gameStage: 0
@@ -118,4 +121,5 @@ MonoBehaviour:
   addCanTransformShort: 0
   addCanFly: 0
   addCanTurn: 0
+  useMovementPaper: 0
   movement_Paper: {fileID: 0}
