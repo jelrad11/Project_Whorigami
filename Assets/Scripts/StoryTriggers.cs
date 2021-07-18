@@ -5,12 +5,9 @@ using UnityEngine;
 public class StoryTriggers : MonoBehaviour
 {
     public int storyPoint;
-<<<<<<< HEAD
     public GameObject nextTrigger;
     public bool deactiveThisTrigger;
     public GameObject specialTrigger;
-=======
->>>>>>> parent of 8c5ab83 (Update)
     private StoryController mainStoryController;
     public Vector3 saveLocation;
     public Vector3 saveRotation;
@@ -22,12 +19,8 @@ public class StoryTriggers : MonoBehaviour
     public bool addCanTransformShort;
     public bool addCanFly;
     public bool addCanTurn;
-
-<<<<<<< HEAD
-
     
-=======
->>>>>>> parent of 8c5ab83 (Update)
+    public bool useMovementPaper;
     public Movement_Paper movement_Paper;
     void Awake () {
         mainStoryController = GameObject.Find("StoryController").GetComponent<StoryController>();
@@ -46,16 +39,13 @@ public class StoryTriggers : MonoBehaviour
                 foreach (Transform child in transform)
                     child.gameObject.SetActive(false);
             }
-<<<<<<< HEAD
             nextTrigger.SetActive(true);
             if(deactiveThisTrigger) specialTrigger.SetActive(false);
             
-=======
-
->>>>>>> parent of 8c5ab83 (Update)
-            movement_Paper = other.GetComponentInParent<Movement_Paper>();
-            
-            if(addCanTransformLong || addCanTransformShort || addCanFly || addCanTurn) StartCoroutine(addAbility());
+            if(useMovementPaper){
+                movement_Paper = other.GetComponentInParent<Movement_Paper>();
+                if(addCanTransformLong || addCanTransformShort || addCanFly || addCanTurn) StartCoroutine(addAbility());
+            }
 
             //SaveSystem.SavePlayer(gameStage, saveLocation, saveRotation, cameraState, movement_Paper.canTransformLong, movement_Paper.canTransformShort, movement_Paper.canFly, movement_Paper.canTurn);
         }
