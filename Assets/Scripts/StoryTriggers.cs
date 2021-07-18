@@ -5,9 +5,9 @@ using UnityEngine;
 public class StoryTriggers : MonoBehaviour
 {
     public int storyPoint;
-    public GameObject nextTrigger;
+    public List<GameObject> nextTrigger;
     public bool deactiveThisTrigger;
-    public GameObject specialTrigger;
+    public List<GameObject>  specialTrigger;
     private StoryController mainStoryController;
     public Vector3 saveLocation;
     public Vector3 saveRotation;
@@ -43,8 +43,8 @@ public class StoryTriggers : MonoBehaviour
                 foreach (Transform child in transform)
                     child.gameObject.SetActive(false);
             }
-            nextTrigger.SetActive(true);
-            if(deactiveThisTrigger) specialTrigger.SetActive(false);
+            for(int i = 0; i < nextTrigger.Count; i++) nextTrigger[i].SetActive(true);
+            if(deactiveThisTrigger) for(int i = 0; i < specialTrigger.Count; i++) specialTrigger[i].SetActive(false);
             
             if(useMovementPaper){
                 movement_Paper = other.GetComponentInParent<Movement_Paper>();
