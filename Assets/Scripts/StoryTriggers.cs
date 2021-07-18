@@ -6,6 +6,8 @@ public class StoryTriggers : MonoBehaviour
 {
     public int storyPoint;
     public GameObject nextTrigger;
+    public bool deactiveThisTrigger;
+    public GameObject specialTrigger;
     private StoryController mainStoryController;
     public Vector3 saveLocation;
     public Vector3 saveRotation;
@@ -17,6 +19,7 @@ public class StoryTriggers : MonoBehaviour
     public bool addCanTransformShort;
     public bool addCanFly;
     public bool addCanTurn;
+
 
     
     public Movement_Paper movement_Paper;
@@ -40,6 +43,7 @@ public class StoryTriggers : MonoBehaviour
 
             }
             nextTrigger.SetActive(true);
+            if(deactiveThisTrigger) specialTrigger.SetActive(false);
             
             movement_Paper = other.GetComponentInParent<Movement_Paper>();
             
