@@ -269,6 +269,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 9188175518824680607}
+        m_TargetAssemblyTypeName: MenuScript, Assembly-CSharp
+        m_MethodName: applySettings
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &9188175518632778089
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -552,6 +564,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameStage: 0
+  audioSources: []
   buttonPins:
   - {fileID: 9188175519806382347}
   - {fileID: 9188175520034649850}
@@ -562,6 +575,9 @@ MonoBehaviour:
   sideButtonPins:
   - {fileID: 9188175520504280840}
   - {fileID: 9188175520632084283}
+  actSliders:
+  - {fileID: 9188175520504280839}
+  - {fileID: 9188175520632084278}
   pauseMenu: {fileID: 9188175520533752127}
   maxButtons: 6
   currentButton: -1
@@ -570,6 +586,7 @@ MonoBehaviour:
   bSC: 0.3
   sliderValueChange: 0.1
   slCD: 0.2
+  storyController: {fileID: 0}
 --- !u!1 &9188175518848041361
 GameObject:
   m_ObjectHideFlags: 0
@@ -1235,7 +1252,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 9188175519401687364}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 9188175518824680607}
+        m_TargetAssemblyTypeName: MenuScript, Assembly-CSharp
+        m_MethodName: restartLevel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 0
 --- !u!114 &9188175519401687366
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2007,7 +2036,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 9188175520414318179}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 9188175518824680607}
+        m_TargetAssemblyTypeName: MenuScript, Assembly-CSharp
+        m_MethodName: loadLatest
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &9188175520414318181
 MonoBehaviour:
   m_ObjectHideFlags: 0

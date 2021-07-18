@@ -7,6 +7,7 @@ using TMPro;
 public class StoryController : MonoBehaviour
 {
     public float maxSubtitleLength = 15f;
+    public GameObject subBackGround;
     public AudioSource audioSource;
     public TMP_Text subtitleBox;
     public List<string> storyLines;
@@ -28,8 +29,18 @@ public class StoryController : MonoBehaviour
             callStory(storyPointQueue[0]);
             storyPointQueue.RemoveAt(0);
         }
+
+        if(currentlyTalking) subBackGround.SetActive(true);
+        else subBackGround.SetActive(false);
     }
 
+    public void applySettings(){
+        OptionData optData = SaveSystem.LoadOptions();
+        if(optData != null){
+            float subtitleSize = 25f + (10 * optData.subtitles);
+            subtitleBox.fontSize = subtitleSize;
+        }
+    }
     private void addStoryLines(){
         storyLines = new List<string>();
         // this is where story lines for the plain paper scene start, index numbers 0-14, also added individual numbers in front of lines -Kai

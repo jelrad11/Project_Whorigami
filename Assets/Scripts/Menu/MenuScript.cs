@@ -8,8 +8,10 @@ public class MenuScript : MonoBehaviour
 {
     public int gameStage;
     
+    public List<AudioSource> audioSources;
     public List<GameObject> buttonPins;
     public List<GameObject> sideButtonPins;
+    public List<Slider> actSliders;
     public GameObject pauseMenu;
     public int maxButtons;
     public int currentButton = 0;
@@ -23,7 +25,15 @@ public class MenuScript : MonoBehaviour
     private float sliderCooldown = 0.2f;
     private bool pauseMenuActive = true;
 
-    
+    public StoryController storyController;
+    private void Start()
+    {
+        OptionData optData = SaveSystem.LoadOptions();
+        if(optData != null){
+            actSliders[0].value = optData.subtitles;
+            actSliders[1].value = optData.audio;
+        }
+    }
     private void Update()
     {
         buttonSwitchCooldown -= Time.deltaTime;
@@ -54,23 +64,28 @@ public class MenuScript : MonoBehaviour
         }
     }
 
-    private void applySettings(){
+    public void applySettings(){
+        storyController.applySettings();
 
+        OptionData optData = SaveSystem.LoadOptions();
+        if(optData != null)
+            for(int i = 0; i < audioSources.Count; i++)
+                audioSources[i].volume = optData.audio;
     }
     
     public void changeToMenu(){
         SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
     }
 
-    // public void saveGame(){
-    //     SaveSystem.SavePlayer(gameStage, )
-    // }
-
     public void restartLevel(){
         switch(gameStage){
             case 0:
             Data.LoadSave = false;
             SceneManager.LoadScene("JellyScene");
+            break;
+            case 1:
+            Data.LoadSave = false;
+            SceneManager.LoadScene("Bird Level-Final");
             break;
         }
     }
