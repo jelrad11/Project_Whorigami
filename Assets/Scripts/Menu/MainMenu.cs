@@ -33,14 +33,6 @@ public class MainMenu : MonoBehaviour
     public float textSize_normal;
     public float textSize_big;
 
-    private void Start()
-    {
-        OptionData optData = SaveSystem.LoadOptions();
-        if(optData != null){
-            sliders[0].value = optData.subtitles;
-            sliders[1].value = optData.audio;
-        }
-    }
     private void Update()
     {
         buttonSwitchCooldown -= Time.deltaTime;
