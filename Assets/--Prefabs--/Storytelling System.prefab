@@ -120,6 +120,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxSubtitleLength: 15
+  subBackGround: {fileID: 691708962}
   audioSource: {fileID: 1525629596481535895}
   subtitleBox: {fileID: 8610707344156485869}
   storyLines: []
