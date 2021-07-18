@@ -8,7 +8,7 @@ public class Movement_Paper : MonoBehaviour
     public float maxVelocityFlat = 1.2f;
     public float rollSpeed = 5f;
 
-    private float rotationSpeed = 6f;
+    private float rotationSpeed = 1.4f;
     private float maxRotationSpeed = 6f;
     private float minRotationSpeed = 0f;
 
@@ -30,7 +30,7 @@ public class Movement_Paper : MonoBehaviour
 
     private float vertRotationLimit = 20f;
     private float jumpstrengh = 0.5f;
-    private float weakGravity = 9f; // reduces gravity for flatPaper from "9.81" to "9.81 - variable" for flatPaper
+    private float weakGravity = 9.3f; // reduces gravity for flatPaper from "9.81" to "9.81 - variable" for flatPaper
     private float jumpForward = 0.5f;
 
     private float criticalSpeed = 0.05f;
@@ -39,6 +39,10 @@ public class Movement_Paper : MonoBehaviour
     private bool lastDirectionForward = true; // true if forward, false if back
     private float lastVelocity = 0f;
     private bool lastFormLong = false; // false = short, true = long
+
+    // help variable for solving turning issues
+
+    private bool lastDirectionForwardTurning = true;
 
     // inputs
     float x_axis;
@@ -49,6 +53,8 @@ public class Movement_Paper : MonoBehaviour
     bool transform_right;
     bool transform_left;
     bool transform_any;
+
+    float x_axis_last;
 
     // variables about what the paper can do through story progression
 
@@ -70,8 +76,8 @@ public class Movement_Paper : MonoBehaviour
 
     void Update()
     {
-        if(canTurn) unrestrictRb();
-        
+        if (canTurn) unrestrictRb();
+
         getInput();
         rollUp();
 
@@ -81,7 +87,7 @@ public class Movement_Paper : MonoBehaviour
         }
 
         transfCooldown -= Time.deltaTime;
-        
+
         // debug test
         /*
         if (Input.GetKeyDown(KeyCode.G))
@@ -136,7 +142,6 @@ public class Movement_Paper : MonoBehaviour
     {
         x_axis = Input.GetAxis("Horizontal");
 
-
         if (flat)
         {
             y_axis = Input.GetAxis("Vertical");
@@ -156,7 +161,7 @@ public class Movement_Paper : MonoBehaviour
 
         if (canTransformShort)
         {
-            transform_up = (Input.GetAxis("DPadVertical") > 0 || Input.GetButtonDown("Button_bot") || Input.GetKeyDown(KeyCode.E));
+            transform_up = (Input.GetAxis("DPadVertical") > 0 || Input.GetButtonDown("Button_bot"));
             transform_down = (Input.GetAxis("DPadVertical") < 0 || Input.GetButtonDown("Button_bot"));
         }
         else
@@ -167,7 +172,7 @@ public class Movement_Paper : MonoBehaviour
 
         if (canTransformLong)
         {
-            transform_right = (Input.GetAxis("DPadHorizontal") > 0 || Input.GetButtonDown("Button_left") || Input.GetKeyDown(KeyCode.Q));
+            transform_right = (Input.GetAxis("DPadHorizontal") > 0 || Input.GetButtonDown("Button_left"));
             transform_left = (Input.GetAxis("DPadHorizontal") < 0 || Input.GetButtonDown("Button_left"));
         }
         else
@@ -258,7 +263,7 @@ public class Movement_Paper : MonoBehaviour
                 audioSource.pitch = Random.Range(0.8f, 1.2f);
                 audioSource.Play();
 
-                Jump();
+                if(canFly) Jump();
             }
         }
     }
@@ -343,14 +348,42 @@ public class Movement_Paper : MonoBehaviour
 
                 Vector3 vel_without_y = new Vector3(longRb.velocity.x, 0f, longRb.velocity.z);
 
-                float rotation0 = rotationSpeed * vel_without_y.magnitude;
+                float rotation0 = rotationSpeed; //* vel_without_y.magnitude;
                 rotation0 = Mathf.Clamp(rotation0, minRotationSpeed, maxRotationSpeed);
                 Vector3 rotation = new Vector3(0f, 90f, 0f) * rotation0 * Time.fixedDeltaTime;
 
-                bool forward = (Vector3.Angle(vel_without_y, flatPaper.transform.right * -1) < 10f);
-                bool backward = (Vector3.Angle(vel_without_y, flatPaper.transform.right * 1) < 10f);
+                bool forward;
+                bool backward;
 
-                lastDirectionForward = !backward;
+                if (Mathf.Abs(y_axis) > 0.1f)
+                {
+                    if (y_axis > 0)
+                    {
+                        forward = true;
+                        backward = false;
+                    }
+                    else
+                    {
+                        forward = false;
+                        backward = true;
+                    }
+                    lastDirectionForwardTurning = forward;
+                }
+                else if (vel_without_y.magnitude > criticalSpeed)
+                {
+                    forward = (Vector3.Angle(vel_without_y, flatPaper.transform.right * -1) < 10f);
+                    backward = (Vector3.Angle(vel_without_y, flatPaper.transform.right * 1) < 10f);
+
+                    lastDirectionForwardTurning = forward;
+                    //   Debug.Log(lastDirectionForwardTurning);
+                }
+                else
+                {
+                    forward = false;
+                    backward = false;
+                }
+
+                lastDirectionForward = forward;
                 lastVelocity = vel_without_y.magnitude;
 
                 if ((longRb.velocity.magnitude > criticalSpeed) && (forward) && (x_axis != 0))
@@ -360,6 +393,13 @@ public class Movement_Paper : MonoBehaviour
                 else if ((longRb.velocity.magnitude > criticalSpeed) && (backward) && (x_axis != 0))
                 {
                     rolledUp_Long.transform.Rotate(rotation * -1f * x_axis, Space.World);
+                }
+                else
+                {
+                    if (Mathf.Abs(x_axis_last) > 0.1f)
+                    {
+                        rolledUp_Long.transform.Rotate(x_axis_last * rotation, Space.World);
+                    }
                 }
             }
             synchroniseObjects(1f);
@@ -372,14 +412,42 @@ public class Movement_Paper : MonoBehaviour
 
                 Vector3 vel_without_y = new Vector3(shortRb.velocity.x, 0f, shortRb.velocity.z);
 
-                float rotation0 = rotationSpeed * vel_without_y.magnitude;
+                float rotation0 = rotationSpeed; // * vel_without_y.magnitude;
                 rotation0 = Mathf.Clamp(rotation0, minRotationSpeed, maxRotationSpeed);
                 Vector3 rotation = new Vector3(0f, 90f, 0f) * rotation0 * Time.fixedDeltaTime;
 
-                bool forward = (Vector3.Angle(vel_without_y, flatPaper.transform.right * -1) < 10f);
-                bool backward = (Vector3.Angle(vel_without_y, flatPaper.transform.right * 1) < 10f);
+                bool forward;
+                bool backward;
 
-                lastDirectionForward = !backward;
+                if (Mathf.Abs(y_axis) > 0.1f)
+                {
+                    if (y_axis > 0)
+                    {
+                        forward = true;
+                        backward = false;
+                    }
+                    else
+                    {
+                        forward = false;
+                        backward = true;
+                    }
+                    lastDirectionForwardTurning = forward;
+                }
+                else if (vel_without_y.magnitude > criticalSpeed)
+                {
+                    forward = (Vector3.Angle(vel_without_y, flatPaper.transform.right * -1) < 10f);
+                    backward = (Vector3.Angle(vel_without_y, flatPaper.transform.right * 1) < 10f);
+
+                    lastDirectionForwardTurning = forward;
+                    //   Debug.Log(lastDirectionForwardTurning);
+                }
+                else
+                {
+                    forward = false;
+                    backward = false;
+                }
+
+                lastDirectionForward = forward;
                 lastVelocity = vel_without_y.magnitude;
 
                 if ((shortRb.velocity.magnitude > criticalSpeed) && (forward) && (x_axis != 0))
@@ -390,10 +458,38 @@ public class Movement_Paper : MonoBehaviour
                 {
                     rolledUp_Short.transform.Rotate(rotation * -1f * x_axis, Space.World);
                 }
+                else
+                {
+                    if (Mathf.Abs(x_axis_last) > 0.1f)
+                    {
+                        rolledUp_Short.transform.Rotate(x_axis_last * rotation, Space.World);
+                    }
+                }
             }
             synchroniseObjects(2f);
         }
     }
+
+    private void LateUpdate()
+    {
+        if (x_axis != 0)
+        {
+            if (lastDirectionForwardTurning == false)
+            {
+                x_axis_last = Input.GetAxis("Horizontal") * -1f;
+            }
+            else
+            {
+                x_axis_last = Input.GetAxis("Horizontal");
+            }
+        }
+        else
+        {
+            lastDirectionForwardTurning = true;
+        }
+
+    }
+
     private void checkVelocity()
     {
         Rigidbody RB;

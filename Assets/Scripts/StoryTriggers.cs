@@ -22,8 +22,12 @@ public class StoryTriggers : MonoBehaviour
     
     public bool useMovementPaper;
     public Movement_Paper movement_Paper;
+
+    private Tutorial_ui ui_script;
+
     void Awake () {
         mainStoryController = GameObject.Find("StoryController").GetComponent<StoryController>();
+        ui_script = GameObject.Find("StoryController").GetComponent<Tutorial_ui>();
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -64,6 +68,54 @@ public class StoryTriggers : MonoBehaviour
             movement_Paper.canTurn = true;
             movement_Paper.unrestrictRb();
         }
-        if(addAbilityTimer != 0f) gameObject.SetActive(false);
+
+        FadeInUI();
+
+        yield return new WaitForSeconds(9f);
+
+        FadeOutUI();
+
+        if (addAbilityTimer != 0f) gameObject.SetActive(false);
     }
+
+    private void FadeInUI()
+    {
+        if (addCanTransformLong)
+        {
+            ui_script.FadeInImage(0);
+        }
+        else if (addCanTurn)
+        {
+            ui_script.FadeInImage(1);
+        }
+        else if (addCanTransformShort)
+        {
+            ui_script.FadeInImage(2);
+        }
+        else if (addCanFly)
+        {
+            ui_script.FadeInImage(3);
+        }
+    }
+
+    private void FadeOutUI()
+    {
+        if (addCanTransformLong)
+        {
+            ui_script.FadeOutImage(0);
+        }
+        else if (addCanTurn)
+        {
+            ui_script.FadeOutImage(1);
+        }
+        else if (addCanTransformShort)
+        {
+            ui_script.FadeOutImage(2);
+        }
+        else if (addCanFly)
+        {
+            ui_script.FadeOutImage(3);
+        }
+    }
+
 }
