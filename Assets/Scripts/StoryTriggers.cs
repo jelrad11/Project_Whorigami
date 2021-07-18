@@ -52,7 +52,7 @@ public class StoryTriggers : MonoBehaviour
             }
 
             if(gameStage == 0) SaveSystem.SavePlayer(gameStage, saveLocation, saveRotation, cameraState, movement_Paper.canTransformLong, movement_Paper.canTransformShort, movement_Paper.canFly, movement_Paper.canTurn);
-            else if(gameStage == 1) SaveSystem.SavePlayer(gameStage, saveLocation, saveRotation, "null", movement_Paper.canTransformLong, movement_Paper.canTransformShort, movement_Paper.canFly, movement_Paper.canTurn);
+            else if(gameStage == 1) SaveSystem.SavePlayer(gameStage, saveLocation, saveRotation, "null",false, false, false, false);
         }
     }
 

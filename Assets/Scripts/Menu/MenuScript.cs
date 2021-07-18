@@ -23,8 +23,13 @@ public class MenuScript : MonoBehaviour
     private float sliderCooldown = 0.2f;
     private bool pauseMenuActive = true;
 
+    public Movement_Paper movement_Paper;
     public StoryController storyController;
     public List<AudioSource> audioSources;
+    private void Start()
+    {
+        applySettings();
+    }
     private void Update()
     {
         buttonSwitchCooldown -= Time.deltaTime;
@@ -58,6 +63,15 @@ public class MenuScript : MonoBehaviour
     private void applySettings(){
         storyController.applySettings();
         OptionData optData = SaveSystem.LoadOptions();
+
+        if(Data.LoadSave){
+            PlayerData data = SaveSystem.LoadPlayer();
+            movement_Paper.canFly = data.canFly;
+            movement_Paper.canTransformLong = data.canTransformLong;
+            movement_Paper.canTransformShort = data.canTransformShort;
+            movement_Paper.canTurn = data.canTurn;
+        }
+        
 
         for(int i = 0; i < audioSources.Count; i++){
             audioSources[i].volume = optData.audio;
