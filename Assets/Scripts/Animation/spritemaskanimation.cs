@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//This Script has been taken from online, and has not been created by any of us - Patrick Kayser
 public class spritemaskanimation : MonoBehaviour
 {
 
@@ -51,6 +52,13 @@ public class spritemaskanimation : MonoBehaviour
             {
                 // Then we go over a iteration of all the sprites present in the Sprite Array using the For Loop
                 for (int i = 0; i < sprite.Length; i++)
+                {
+                    // And we assign the Sprite of the Spritemask as the current index of the Sprite Array
+                    spritemask.sprite = sprite[i];
+                    // We wait for a certain period of Time between Frames
+                    yield return new WaitForSeconds(TimeBetweenFrames);
+                }
+                for (int i = sprite.Length; i > 0; i--)
                 {
                     // And we assign the Sprite of the Spritemask as the current index of the Sprite Array
                     spritemask.sprite = sprite[i];
