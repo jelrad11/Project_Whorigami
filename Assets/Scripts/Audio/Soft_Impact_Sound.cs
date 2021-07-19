@@ -36,7 +36,7 @@ public class Soft_Impact_Sound : MonoBehaviour
 
                 float spd = RB.velocity.magnitude * sound_amplitude;
 
-                spd = Mathf.Clamp(spd, 0, 0.15f);
+                spd = Mathf.Clamp(spd, 0, 0.2f);
                 source.volume = spd;
                 source.pitch = Random.Range(1f, 1.2f);
                 source.Play();
@@ -49,7 +49,7 @@ public class Soft_Impact_Sound : MonoBehaviour
 
                 float spd = RB.velocity.magnitude * sound_amplitude;
 
-                spd = Mathf.Clamp(spd, 0, 0.15f);
+                spd = Mathf.Clamp(spd, 0, 0.2f);
                 source.volume = spd;
                 source.pitch = Random.Range(1f, 1.2f);
                 source.Play();
@@ -61,7 +61,7 @@ public class Soft_Impact_Sound : MonoBehaviour
 
                 float spd = RB.velocity.magnitude * sound_amplitude;
 
-                spd = Mathf.Clamp(spd, 0, 0.1f);
+                spd = Mathf.Clamp(spd, 0, 0.4f);
                 source.volume = spd;
                 source.pitch = Random.Range(0.9f, 1.1f);
                 source.Play();
