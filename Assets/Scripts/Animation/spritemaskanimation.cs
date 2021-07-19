@@ -60,6 +60,9 @@ public class spritemaskanimation : MonoBehaviour
                     // We wait for a certain period of Time between Frames
                     yield return new WaitForSeconds(TimeBetweenFrames);
                 }
+
+                yield return new WaitForSeconds(TimeOffset);
+                
                 for (int i = sprite.Length-1; i >= 0; i--)
                 {
                     // And we assign the Sprite of the Spritemask as the current index of the Sprite Array
@@ -68,7 +71,7 @@ public class spritemaskanimation : MonoBehaviour
                     yield return new WaitForSeconds(TimeBetweenFrames);
                 }
 
-                yield return new WaitForSeconds(TimeOffset);
+                
                 yield return new WaitForEndOfFrame();
             }
             // Now we check for the else statement that runs if the animation is to be derived from Animator, i.e, DeriveFromSpriteRenderer is true
