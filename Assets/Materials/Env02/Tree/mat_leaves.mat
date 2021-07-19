@@ -12,7 +12,7 @@ Material:
   m_ShaderKeywords: _ALPHATEST_ON _SPECULARHIGHLIGHTS_OFF
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 1
-  m_DoubleSidedGI: 1
+  m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses: []
@@ -126,7 +126,7 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - Color_0522aace295c40a0833acaa5eafbdce3: {r: 0.2511608, g: 0.4528302, b: 0.18583126, a: 0}
+    - Color_0522aace295c40a0833acaa5eafbdce3: {r: 0.31916645, g: 0.6981132, b: 0.19428623, a: 0}
     - Vector2_33f032d6bc7e46b59ab0d9de68344b88: {r: 0, g: 0, b: 0, a: 0}
     - Vector2_355832946836421e998233e0cb0ad9a7: {r: 1, g: 1.64, b: 0, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
