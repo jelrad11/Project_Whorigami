@@ -49,7 +49,7 @@ public class StoryTriggers : MonoBehaviour
             for(int i = 0; i < nextTrigger.Count; i++) nextTrigger[i].SetActive(true);
             if(deactiveThisTrigger) for(int i = 0; i < specialTrigger.Count; i++) specialTrigger[i].SetActive(false);
             
-            if(delayActivation.Count != 0) 
+            if(delayActivation.Count != 0) StartCoroutine(delayActivate());
 
             if(useMovementPaper){
                 movement_Paper = other.GetComponentInParent<Movement_Paper>();
