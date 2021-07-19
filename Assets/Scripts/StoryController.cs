@@ -76,40 +76,71 @@ public class StoryController : MonoBehaviour
 
         // this is where the story lines for the bird scene start, index numbers 16-? -Kai
         /*16*/ storyLines.Add("Now... what did one do as a bird? Perhaps following these red flags would reveal more to her.");
-        /*17*/ storyLines.Add("She’d have to lean into the direction she wanted to go, so this time it was down and to the left.");
-        /*18*/ storyLines.Add("And as she tilted down Dinaa realized that she became faster when going downwards.");
-        /*19*/ storyLines.Add("Ah, these flags seemed to lead back into the tree, where they shifted towards an orange colour. Therefore, the orange flags were next.");
-        /*20*/ storyLines.Add("As she flew, Dinaa could not help but think that these flags might be... a test... meant to see if she could be a bird.");
-        /*21*/ storyLines.Add("The next part was already in sight, a tire swing, and then the blue flags.");
-        /*22*/ storyLines.Add("And she was through, this was easy, now she just had to climb back up into the air, proving that she, just like a bird, could defy gravity itself.");
+        /*17*/ storyLines.Add("She'd have to lean in the direction she wanted to go, so down and to the left.");
+        /*18*/ storyLines.Add("And as the air rushed past her, Dinaa felt that this was it, this was what she wanted. Nothing could match this exhilarating sensation. ");
+        /*19*/ storyLines.Add("As she flew, Dinaa could not help but think that these flags might be a test... meant to see if she really could be a bird.");
+        /*20*/ storyLines.Add("The next part was already in sight, through the tire swing and then the blue flags.");
+        /*21*/ storyLines.Add("And then she was through. This was easy. Now she just had to climb back up into the air, proving that she, just like a bird, could defy gravity itself and then follow the next set of flags.");
+        /*22*/ storyLines.Add("So far, Dinaa felt like she was doing quite well. If things continued like this, then surely, she really would be able to become a bird. But was this really all that birds did? Following flags?" 
+                   + "There had to be more; with all this freedom, they could do anything.");
         /*23*/ storyLines.Add("Alright, these flags led back through the tree again and into the purple flags.");
         /*24*/ storyLines.Add("So far, Dinaa felt like she was doing quite well. If things continued like this, then surely, she really would be able to become a bird." 
                    + "But was this really all that birds did? Following flags? There had to be more, with all this freedom they could do anything.");
-        /*25*/ storyLines.Add("Speaking of flags, next up were the yellow flags.");
-        /*26*/ storyLines.Add("This seemed like it would be the most difficult path yet. Perhaps, it was even the last.");
-        /*27*/ storyLines.Add("So what would she do after following these flags. Perhaps she would fly around freely? That..  actually sounded quite appealing.");
-        /*28*/ storyLines.Add("Ah, it seemed like there was one final test left, although perhaps she ought to collect herself first. ");
-        /*29*/ storyLines.Add("As she ");
-        /*30*/ storyLines.Add("This was it, the final test. Into the canopy in an attempt to break free completely.");
+        /*25*/ storyLines.Add("As she passed over the small treehouse that had contained her not too long ago, Dinaa smiled in triumph; what had seemed like a large world to her back then was but a fraction of the world she had now." 
+                   + "And it was all because she had become a bird. Being a bird was truly the greatest.");
+        /*26*/ storyLines.Add("And perhaps soon, her world would expand once again when she left this tree behind and set out to conquer the skies. Dinaa could hardly wait for that moment.");
+        /*27*/ storyLines.Add("She could see them now, the last flags, the green ones, winding up into the canopy. This was the final test. If she managed to break through, break free, then she would prove herself a true bird.");
+
+
+
+        // The following are storylines that play if the player decided not to follow the flag, centred more around free exploration of the tree the three below are play when the player first strays from the flags at any point
+        /*28*/ storyLines.Add("But… why should she follow the flags? She was free, wasn't she? She could fly wherever she wanted? So Dinaa decided to explore the tree on her own terms.");
+        /*29*/ storyLines.Add("These flags didn't seem to be revealing any great wisdom to her, so Dinaa decided to explore the tree on her own terms.");
+        /*30*/ storyLines.Add("Actually, screw these flags! Dinaa could go wherever she wanted. Who cared if they were some sort of test?");
+
+        //The below are the narrative points that play as the player explores the tree. This particular line is only relevenat if the player doesn't even follow the red flags
+        /*31*/ storyLines.Add("This sense of freedom was exhilarating. Nothing could compare to the air rushing by her wings. This was what she had wanted.");
+        /*32*/ storyLines.Add("Now, where should she explore first? Perhaps she ought to fly by the treehouse; she had never seen it from the outside after all. "
+                   + "Or maybe, she ought to swoop down to see if the tree's lower branches held any secrets.");
+
+        //following line serves to direct player towards lower part of tree
+        /*33*/
+        storyLines.Add("Maybe she should explore the lower branches, see if they held any secrets.");
+        // only play if tire swing hasn't been crossed yet
+        /*34*/ storyLines.Add("While Dinaa explored the tree, something caught her eye. It was A tire swing, gently swaying in the breeze, basically begging her to fly right through it.");
+        /*35*/ storyLines.Add("As she burst through to the other side, Dinaa reveled in the freedom granted by her wings. It was truly remarkable how they allowed her to defy gravity itself, just like a real bird.");
+
+        //following line serves to direct player towards treehouse
+        /*36*/ storyLines.Add("Perhaps she ought to fly by the treehouse again. She had never seen it from the outside after all.");
+        //Treehouse phrase, only plays if treehouse hasn't been passed yet in flag story line
+        /*37*/ storyLines.Add("As she passed by the small treehouse that had contained her not too long ago, Dinaa couldn't help but smile triumphantly. What had seemed like a large world to her back then was but a fraction of the world she had now."
+                    + "And it was all because she had become a bird. This truly was who she wanted to be.");
+
 
         // Cutscene story lines are below here, mostly just doing this because I don't want to have to deal with reassigning all the storyline values in the bird scene
         // this is the bit where it should transition into illustrations between scenes, they're usually their own scene, though that hasn't been implemented yet apparently - Kai
-        /*31*/ storyLines.Add("Well, what now, this was everything wasn’t it? There wasn’t really anywhere else she could go here, was there? And yet, she still hadn't found her identity, her purpose. So perhaps, it laid outside, but how would she get outside…? "
-                + "Dinaa did not have an answer to that. It might be possible for her to get outside if she imitated something else again, like she’d done with the leaf, but what could possibly get her out of here… and that is when she saw it, a bird. "
-                + "She could become a bird and attain true freedom, just like a bird unbound by the unseen chains of gravity.And so Dinaa folded herself, determined to become free. And then she had done it, she had become a bird");
+        /*38*/
+        storyLines.Add("Well, what now, this was everything wasn’t it? There wasn’t really anywhere else she could go here, was there? And yet, she still hadn't found her identity, her purpose. So perhaps, it laid outside, but how would she get outside…? "
+                    + "Dinaa did not have an answer to that. It might be possible for her to get outside if she imitated something else again, like she’d done with the leaf, but what could possibly get her out of here… and that is when she saw it, a bird. "
+                    + "She could become a bird and attain true freedom, just like a bird unbound by the unseen chains of gravity.And so Dinaa folded herself, determined to become free. And then she had done it, she had become a bird");
+
         // and this is the ending scene
-        /*32*/ storyLines.Add("The branches struck her body like whips, unwilling to let her go free. But she was a bird now, she was sure of it, she would overcome this. As she further ascended the leaves grew denser and the branches became thinner but all the more vicious for it." +
-                   "And then, she broke free. Free from the grasp of gravity and the claws of the tree, now she was truly free, she really was a bird. " +
-                   "And so Dinaa flew through the skies, free and unbound, dancing amongst the clouds, and frolicking with her kin, her flock. Though the happiness would not last, as clouds darkened her friends left one by one. " +
-                   "To Dinaa, this made no sense, why would they leave? They were free, what could have them return to the earth? So Dinaa, flew on, although soon the winds picked up and rain started pouring." +
-                   "And Dinaa, frightened as she was, began to realise that perhaps this was what had driven her friends away. Something that she had had no chance to predict, they had predicted, so perhaps she was no bird after all?" +
-                   "Then, as if to confirm her doubts a bolt of pure power struck her down from above, blindingly bright, and full of searing heat. And then it was gone, but the damage was done." +
-                   "Dinaa, unable to keep herself afloat in this rage of the gods, fell down to earth, perhaps a better fate awaited her there?");
+        /*39*/ storyLines.Add("The branches struck her body like whips, unwilling to let her go free. But she was a bird now, she was sure of it, she would overcome this. As she further ascended the leaves grew denser and the branches became thinner but all the more vicious for it." 
+                    + "And then, she broke free. Free from the grasp of gravity and the claws of the tree, now she was truly free, she really was a bird. "
+                    + "And so Dinaa flew through the skies, free and unbound, dancing amongst the clouds, and frolicking with her kin, her flock. Though the happiness would not last, as clouds darkened her friends left one by one. " 
+                    + "To Dinaa, this made no sense, why would they leave? They were free, what could have them return to the earth? So Dinaa, flew on, although soon the winds picked up and rain started pouring." 
+                    + "And Dinaa, frightened as she was, began to realise that perhaps this was what had driven her friends away. Something that she had had no chance to predict, they had predicted, so perhaps she was no bird after all?"
+                    + "Then, as if to confirm her doubts a bolt of pure power struck her down from above, blindingly bright, and full of searing heat. And then it was gone, but the damage was done."
+                    + "Dinaa, unable to keep herself afloat in this rage of the gods, fell down to earth, perhaps a better fate awaited her there?");
 
-        //
-
-
-
+        //this is a variation of the ending scen that plays if the player doesn't follow the flags at any point
+        /*40*/ storyLines.Add("Screw this tree! Dinaa had had enough. She was a bird! She was free! Why would she confine herself to a single tree? She could go wherever she wanted to! Nobody could tell her where to go."
+                    + "And then, she broke free. Free from the grasp of gravity and the claws of the tree, now she was truly free, she really was a bird. "
+                    + "And so Dinaa flew through the skies, free and unbound, dancing amongst the clouds, and frolicking with her kin, her flock. Though the happiness would not last, as clouds darkened her friends left one by one. "
+                    + "To Dinaa, this made no sense, why would they leave? They were free, what could have them return to the earth? So Dinaa, flew on, although soon the winds picked up and rain started pouring."
+                    + "And Dinaa, frightened as she was, began to realise that perhaps this was what had driven her friends away. Something that she had had no chance to predict, they had predicted, so perhaps she was no bird after all?"
+                    + "Then, as if to confirm her doubts a bolt of pure power struck her down from above, blindingly bright, and full of searing heat. And then it was gone, but the damage was done."
+                    + "Dinaa, unable to keep herself afloat in this rage of the gods, fell down to earth, perhaps a better fate awaited her there?");
     }
 
     public void callStory(int storyPoint){

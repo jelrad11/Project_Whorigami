@@ -16785,7 +16785,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 291532759}
-  m_LocalRotation: {x: 0.044366524, y: 0.9208996, z: 0.37130517, w: -0.1100365}
+  m_LocalRotation: {x: 0.04436655, y: 0.9208996, z: 0.3713052, w: -0.11003654}
   m_LocalPosition: {x: 0.91690016, y: -1.4717252, z: 2.4212396}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -31766,7 +31766,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 596539156}
-  m_LocalRotation: {x: -0.017288292, y: 0.7414454, z: 0.019117048, w: 0.670518}
+  m_LocalRotation: {x: -0.017288284, y: 0.7414454, z: 0.019117039, w: 0.670518}
   m_LocalPosition: {x: -0.71611834, y: 0.09000063, z: 0.35056853}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -37004,7 +37004,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 737829177}
-  m_LocalRotation: {x: -0.09727464, y: -0.6274104, z: -0.07941625, w: 0.7684965}
+  m_LocalRotation: {x: -0.097274646, y: -0.6274104, z: -0.07941627, w: 0.7684965}
   m_LocalPosition: {x: 1.8346076, y: -0.42183542, z: -0.18620133}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -39162,7 +39162,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 797650485}
-  m_LocalRotation: {x: -0.040633745, y: 0.5976623, z: 0.030351182, w: 0.80014217}
+  m_LocalRotation: {x: -0.040633745, y: 0.5976623, z: 0.03035118, w: 0.8001422}
   m_LocalPosition: {x: -2.4354339, y: -0.28276777, z: -0.6389544}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -81517,7 +81517,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1601505196}
-  m_LocalRotation: {x: -0.084292494, y: 0.56093925, z: 0.057554014, w: 0.8215409}
+  m_LocalRotation: {x: -0.0842925, y: 0.56093925, z: 0.05755401, w: 0.8215409}
   m_LocalPosition: {x: -0.94488573, y: -0.27841997, z: -0.3233931}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -99309,7 +99309,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Path: {fileID: 1994915574}
-  m_PathPosition: -4016.2
+  m_PathPosition: -4020.2
   m_PositionUnits: 0
   m_PathOffset: {x: 0.35, y: -1.28, z: 0.47}
   m_XDamping: 0
