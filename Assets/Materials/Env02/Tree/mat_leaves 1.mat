@@ -126,7 +126,7 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - Color_0522aace295c40a0833acaa5eafbdce3: {r: 0.14305592, g: 0.3207547, b: 0.08624065, a: 0}
+    - Color_0522aace295c40a0833acaa5eafbdce3: {r: 0.098369315, g: 0.21698111, b: 0.06448024, a: 0}
     - Vector2_33f032d6bc7e46b59ab0d9de68344b88: {r: 0, g: 0, b: 0, a: 0}
     - Vector2_355832946836421e998233e0cb0ad9a7: {r: 1, g: 1.64, b: 0, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
