@@ -6,6 +6,9 @@ public class GameController : MonoBehaviour
 {
     public GameObject playerObj;
     private Animator stateSwitchAnim;
+    private void Start(){
+        if(SaveSystem.LoadOptions() == null) SaveSystem.SaveOptions(1f, 1f);
+    }
     private void Awake()
     {
         if(Data.LoadSave){
