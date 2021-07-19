@@ -5,6 +5,9 @@ using UnityEngine;
 public class StoryTriggers : MonoBehaviour
 {
     public int storyPoint;
+
+    public List<GameObject> delayActivation;
+    public float timeDelay;
     public List<GameObject> nextTrigger;
     public bool deactiveThisTrigger;
     public List<GameObject>  specialTrigger;
@@ -46,6 +49,8 @@ public class StoryTriggers : MonoBehaviour
             for(int i = 0; i < nextTrigger.Count; i++) nextTrigger[i].SetActive(true);
             if(deactiveThisTrigger) for(int i = 0; i < specialTrigger.Count; i++) specialTrigger[i].SetActive(false);
             
+            if(delayActivation.Count != 0) 
+
             if(useMovementPaper){
                 movement_Paper = other.GetComponentInParent<Movement_Paper>();
                 if(addCanTransformLong || addCanTransformShort || addCanFly || addCanTurn) StartCoroutine(addAbility());
@@ -55,7 +60,12 @@ public class StoryTriggers : MonoBehaviour
             else if(gameStage == 1) SaveSystem.SavePlayer(gameStage, saveLocation, saveRotation, "null",false, false, false, false);
         }
     }
+    
+    private IEnumerator delayActivate(){
+        yield return new WaitForSeconds(timeDelay);
 
+        for(int i = 0; i < delayActivation.Count; i++) delayActivation[i].SetActive(true);
+    }
     private IEnumerator addAbility(){
         Data.AbilityAddTimer += addAbilityTimer;
         yield return new WaitForSeconds(Data.AbilityAddTimer);
