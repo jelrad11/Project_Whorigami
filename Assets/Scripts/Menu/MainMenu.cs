@@ -32,7 +32,10 @@ public class MainMenu : MonoBehaviour
 
     public float textSize_normal;
     public float textSize_big;
-
+    
+    private void Start(){
+        if(SaveSystem.LoadOptions() == null) SaveSystem.SaveOptions(1f, 1f);
+    }
     private void Update()
     {
         buttonSwitchCooldown -= Time.deltaTime;

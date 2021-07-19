@@ -203,9 +203,9 @@ public class Movement_Paper : MonoBehaviour
 
                 transfCooldown = 1f;
 
-                audioSource.clip = roll_up;
-                audioSource.pitch = Random.Range(0.8f, 1.2f);
-                audioSource.Play();
+                // audioSource.clip = roll_up;
+                // audioSource.pitch = Random.Range(0.8f, 1.2f);
+                // audioSource.Play();
             }
             else if ((transform_left || transform_right) && transfCooldown <= 0f)
             {
@@ -223,9 +223,9 @@ public class Movement_Paper : MonoBehaviour
 
                 transfCooldown = 1f;
 
-                audioSource.clip = roll_up;
-                audioSource.pitch = Random.Range(0.8f, 1.2f);
-                audioSource.Play();
+                // audioSource.clip = roll_up;
+                // audioSource.pitch = Random.Range(0.8f, 1.2f);
+                // audioSource.Play();
             }
         }
         else
@@ -259,9 +259,9 @@ public class Movement_Paper : MonoBehaviour
 
                 transfCooldown = 1f;
 
-                audioSource.clip = roll_down;
-                audioSource.pitch = Random.Range(0.8f, 1.2f);
-                audioSource.Play();
+                // audioSource.clip = roll_down;
+                // audioSource.pitch = Random.Range(0.8f, 1.2f);
+                // audioSource.Play();
 
                 if(canFly) Jump();
             }
@@ -661,13 +661,13 @@ public class Movement_Paper : MonoBehaviour
         switch (direction)
         {
             case 0:
-                return new Vector3(posRefW.transform.position.x, posRefW.transform.position.y + (rolledUp_Long.transform.localScale.y / 4f) - (flatPaper.transform.localScale.y), posRefW.transform.position.z);
+                return new Vector3(posRefW.transform.position.x, posRefW.transform.position.y + (0.125f), posRefW.transform.position.z);
             case 1:
-                return new Vector3(posRefS.transform.position.x, posRefS.transform.position.y + (rolledUp_Long.transform.localScale.y / 4f) - (flatPaper.transform.localScale.y), posRefS.transform.position.z);
+                return new Vector3(posRefS.transform.position.x, posRefS.transform.position.y + (0.125f), posRefS.transform.position.z);
             case 2:
-                return new Vector3(posRefA.transform.position.x, posRefA.transform.position.y + (rolledUp_Long.transform.localScale.y / 4f) - (flatPaper.transform.localScale.y), posRefA.transform.position.z);
+                return new Vector3(posRefA.transform.position.x, posRefA.transform.position.y + (0.125f), posRefA.transform.position.z);
             case 3:
-                return new Vector3(posRefD.transform.position.x, posRefD.transform.position.y + (rolledUp_Long.transform.localScale.y / 4f) - (flatPaper.transform.localScale.y), posRefD.transform.position.z);
+                return new Vector3(posRefD.transform.position.x, posRefD.transform.position.y + (0.125f), posRefD.transform.position.z);
             default:
                 return new Vector3();
         }
