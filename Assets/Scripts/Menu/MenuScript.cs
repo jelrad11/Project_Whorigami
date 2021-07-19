@@ -26,9 +26,21 @@ public class MenuScript : MonoBehaviour
     public Movement_Paper movement_Paper;
     public StoryController storyController;
     public List<AudioSource> audioSources;
+
+    private Audio_mix audio_mix_script;
+
+    private void Awake()
+    {
+        audio_mix_script = GameObject.FindGameObjectWithTag("AudioSources").GetComponent<Audio_mix>();
+    }
+
     private void Start()
     {
         applySettings();
+
+        // example
+        audio_mix_script.SetVolume(0f); // -80f = silence, 0 = full volume
+
     }
     private void Update()
     {
