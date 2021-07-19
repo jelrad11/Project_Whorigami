@@ -40,7 +40,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7190080449697398518}
-  m_Mesh: {fileID: -5896408824970715485, guid: 8db37800d9cd506408f5acc87d24bc1c, type: 3}
+  m_Mesh: {fileID: 3232932558844262822, guid: 0ac501a0fe865ce4a89ae12903d6de03, type: 3}
 --- !u!23 &8703400219949014819
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -142,9 +142,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   storyPoint: 1
-  nextTrigger: {fileID: 0}
+  nextTrigger:
+  - {fileID: 0}
   deactiveThisTrigger: 0
-  specialTrigger: {fileID: 0}
+  specialTrigger:
+  - {fileID: 0}
   saveLocation: {x: 0, y: 0, z: 0}
   saveRotation: {x: 0, y: 0, z: 0}
   gameStage: 0
@@ -172,7 +174,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8000967732353873124
 Transform:
   m_ObjectHideFlags: 0
@@ -199,8 +201,8 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 0.9716981, g: 0.8615344, b: 0.73794055, a: 1}
-  m_Intensity: 0.01
-  m_Range: 0.96
+  m_Intensity: 0.08
+  m_Range: 4.15
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
