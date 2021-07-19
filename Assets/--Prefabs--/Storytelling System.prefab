@@ -119,8 +119,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 775a1007425974e40bc37b59c571a332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSubtitleLength: 15
   subBackGround: {fileID: 691708962}
+  maxSubtitleLength: 15
   audioSource: {fileID: 1525629596481535895}
   subtitleBox: {fileID: 8610707344156485869}
   storyLines: []
@@ -530,14 +530,14 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 41.02
-  m_fontSizeBase: 41.02
+  m_fontSize: 35
+  m_fontSizeBase: 35
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
