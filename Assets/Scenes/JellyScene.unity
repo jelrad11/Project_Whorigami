@@ -26113,7 +26113,7 @@ PrefabInstance:
     - target: {fileID: 863487330859391249, guid: c3b1103e3fe2e704499cae2e255ea660, type: 3}
       propertyPath: storyAudio.Array.data[5]
       value: 
-      objectReference: {fileID: 8300000, guid: 447599626b0e1df4b8b52ea0e04671b7, type: 3}
+      objectReference: {fileID: 8300000, guid: 096d6144d14f0ef4b9c6fcaa4241b2f9, type: 3}
     - target: {fileID: 863487330859391249, guid: c3b1103e3fe2e704499cae2e255ea660, type: 3}
       propertyPath: storyAudio.Array.data[6]
       value: 
@@ -79802,7 +79802,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1601505196}
-  m_LocalRotation: {x: -0.0842925, y: 0.56093925, z: 0.05755401, w: 0.8215409}
+  m_LocalRotation: {x: -0.084292494, y: 0.56093925, z: 0.057554014, w: 0.8215409}
   m_LocalPosition: {x: -0.94488573, y: -0.27841997, z: -0.3233931}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
