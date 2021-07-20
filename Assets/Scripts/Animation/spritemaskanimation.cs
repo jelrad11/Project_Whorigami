@@ -71,8 +71,8 @@ public class spritemaskanimation : MonoBehaviour
                     yield return new WaitForSeconds(TimeBetweenFrames);
                 }
 
+                yield return new WaitForSeconds(TimeOffset);
                 
-                yield return new WaitForEndOfFrame();
             }
             // Now we check for the else statement that runs if the animation is to be derived from Animator, i.e, DeriveFromSpriteRenderer is true
             else
