@@ -39,7 +39,6 @@ public class MenuScript : MonoBehaviour
         applySettings();
 
         // example
-        audio_mix_script.SetVolume(0f); // -80f = silence, 0 = full volume
 
     }
     private void Update()
@@ -84,10 +83,8 @@ public class MenuScript : MonoBehaviour
             movement_Paper.canTurn = data.canTurn;
         }
         
+        audio_mix_script.SetVolume(-80f + (optData.audio * 80f)); // -80f = silence, 0 = full volume
 
-        for(int i = 0; i < audioSources.Count; i++){
-            audioSources[i].volume = optData.audio;
-        }
     }
     
     public void changeToMenu(){
