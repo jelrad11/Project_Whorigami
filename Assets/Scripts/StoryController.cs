@@ -55,7 +55,7 @@ public class StoryController : MonoBehaviour
         /*1*/ storyLines.Add("Haha! She had done it. She was mobile, unconfined by the fetters that had held her in place until just now, free to go where she pleased! No one could stop her!");
         /*2*/ storyLines.Add("Yet just after overcoming the perhaps greatest hurdle in her way, Dinaa found herself faced with the next predicament. Going in a straight line simply wasn't enough. She had to think of a way to go around bends as well.");
         /*3*/ storyLines.Add("Hmmph, in comparison to her previous troubles, this had been nothing. But still, she had freed herself even further; surely, she could be whatever she wanted to be. She just had to figure that part out still.");
-        /*4*/ storyLines.Add("Dinaa was too wide to get through here, but if she didn't roll up like this, she couldn't move... or could she? Perhaps, she could roll up along her width instead of her length and squeeze her way through that way?");
+        /*4*/ storyLines.Add("Dinaa was too wide to get through here, but if she didn't roll up like this, she couldn't move... or could she? Perhaps, she could roll up along her width instead of her length and squeeze through that way.");
         /*5*/ storyLines.Add("Hah! She was doing it! Truly, no obstacle could stop her!");
         /*6*/ storyLines.Add("Safely on the other side of the bridge, Dinaa couldn't help but applaud her own genius; surely, there was no other as smart as her in this world.");
         /*7*/ storyLines.Add("And once again, Dinaa found herself faced with a seemingly insurmountable hurdle. She somehow had to bridge this gap and reach the room past the guitar and the books. But there was nothing for her to balance on or anything of the sort to get across. "
