@@ -94,6 +94,7 @@ public class MenuScript : MonoBehaviour
     }
     
     public void changeToMenu(){
+        Time.timeScale = 1f;
         SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
     }
 
@@ -102,6 +103,7 @@ public class MenuScript : MonoBehaviour
     // }
 
     public void restartLevel(){
+        Time.timeScale = 1f;
         switch(gameStage){
             case 0:
             Data.LoadSave = false;
@@ -114,6 +116,7 @@ public class MenuScript : MonoBehaviour
         }
     }
     public void loadLatest(){
+        Time.timeScale = 1f;
         switch(gameStage){
             case 0:
             Data.LoadSave = true;
@@ -144,6 +147,10 @@ public class MenuScript : MonoBehaviour
         if(pauseMenuActive) {
             SaveSystem.SaveOptions(sideButtonPins[0].GetComponent<Slider>().value, sideButtonPins[1].GetComponent<Slider>().value);
             applySettings();
+            Time.timeScale = 1f;
+        }
+        else {
+            Time.timeScale = 0f;
         }
         pauseMenuActive = !pauseMenuActive;
         
