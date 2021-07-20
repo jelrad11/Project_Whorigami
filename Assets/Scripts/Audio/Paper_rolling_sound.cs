@@ -37,7 +37,7 @@ public class Paper_rolling_sound : MonoBehaviour
             {
 
                 rollSource.pitch = 0.8f + spd;
-                rollSource.volume = spd;
+                rollSource.volume = spd*2f;
 
                 flySource.volume = 0;
             } else
@@ -57,7 +57,7 @@ public class Paper_rolling_sound : MonoBehaviour
             if (grounded)
             {
                 rollSource.pitch = 0.8f + spd;
-                rollSource.volume = spd;
+                rollSource.volume = spd*2f;
 
                 flySource.volume = 0;
             } else
