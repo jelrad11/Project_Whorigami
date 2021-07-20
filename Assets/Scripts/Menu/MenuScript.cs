@@ -24,6 +24,7 @@ public class MenuScript : MonoBehaviour
     private bool pauseMenuActive = true;
 
     public Movement_Paper movement_Paper;
+    public Movement_Bird_G movement_Bird_G;
     public StoryController storyController;
     public List<AudioSource> audioSources;
 
@@ -72,16 +73,21 @@ public class MenuScript : MonoBehaviour
     }
 
     private void applySettings(){
+        if(gameStage == 0){
+            if(Data.LoadSave){
+                PlayerData data = SaveSystem.LoadPlayer();
+                movement_Paper.canFly = data.canFly;
+                movement_Paper.canTransformLong = data.canTransformLong;
+                movement_Paper.canTransformShort = data.canTransformShort;
+                movement_Paper.canTurn = data.canTurn;
+
+                movement_Paper.applySettings();
+            }
+        }
         storyController.applySettings();
         OptionData optData = SaveSystem.LoadOptions();
 
-        if(Data.LoadSave){
-            PlayerData data = SaveSystem.LoadPlayer();
-            movement_Paper.canFly = data.canFly;
-            movement_Paper.canTransformLong = data.canTransformLong;
-            movement_Paper.canTransformShort = data.canTransformShort;
-            movement_Paper.canTurn = data.canTurn;
-        }
+        
         
         audio_mix_script.SetVolume(-80f + (optData.audio * 80f)); // -80f = silence, 0 = full volume
 

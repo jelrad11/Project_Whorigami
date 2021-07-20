@@ -38,6 +38,14 @@ public class Movement_Bird_G : MonoBehaviour
     public AudioSource glideSource;
     public AudioSource impactSource;
 
+    private void Start()
+    {
+        if(Data.LoadSave){
+            PlayerData data = SaveSystem.LoadPlayer();
+            gameObject.transform.position = new Vector3(data.position[0], data.position[1], data.position[2]);;
+            gameObject.transform.rotation = Quaternion.Euler(data.rotation[0], data.rotation[1], data.rotation[2]);
+        }
+    }
     // Update is called once per frame
     void Update()
     {

@@ -10,9 +10,9 @@ public class MainMenu : MonoBehaviour
     public GameObject mainMenu;
     public GameObject options;
 
-    private bool useContinueButton = true;
-    public TMP_Text continueText;
-    public Button continueButton;
+    public bool useContinueButton = true;
+    public GameObject grayText;
+    public GameObject continueButton;
     private bool inOptions = false;
     public List<GameObject> buttonPins;
     public List<TMP_Text> buttonText;
@@ -36,16 +36,16 @@ public class MainMenu : MonoBehaviour
     public float textSize_big;
     
     private void Start(){
-        
+        SaveSystem.Deletesave();
         if(SaveSystem.LoadPlayer() == null) {
             useContinueButton = false;
-            continueText.color = new Color(70f, 70f, 70f, 255);
-            continueButton.interactable = false;
+            grayText.SetActive(true);
+            continueButton.SetActive(false);
         }
         else {
             useContinueButton = true;
-            continueText.color = new Color(255f, 255f, 255f, 255f);
-            continueButton.interactable = true;
+            grayText.SetActive(false);
+            continueButton.SetActive(true);
         }
 
 

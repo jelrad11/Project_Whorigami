@@ -68,6 +68,11 @@ public class Movement_Paper : MonoBehaviour
     public AudioClip roll_up;
     public AudioClip roll_down;
 
+    public void applySettings(){
+        PlayerData data = SaveSystem.LoadPlayer();
+        gameObject.transform.position = new Vector3(data.position[0], data.position[1], data.position[2]);;
+        gameObject.transform.rotation = Quaternion.Euler(data.rotation[0], data.rotation[1], data.rotation[2]);
+    }
     public void unrestrictRb()
     {
         rolledUp_Long.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;

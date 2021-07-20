@@ -27,13 +27,13 @@ public class SaveSystem
             return data;
         }
         else {
-            Debug.LogError("Save file not found in " + path);
+            //Debug.LogError("Save file not found in " + path);
             return null;
         }
     }
     public static void Deletesave(){
         if(File.Exists(path)) File.Delete(path);
-        else Debug.LogError("Save file not found in " + path);
+        //else Debug.LogError("Save file not found in " + path);
     }
 
 
