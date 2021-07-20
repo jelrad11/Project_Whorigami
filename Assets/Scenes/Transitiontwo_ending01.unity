@@ -2361,7 +2361,7 @@ PlayableDirector:
   m_GameObject: {fileID: 1245921442}
   m_Enabled: 1
   serializedVersion: 3
-  m_PlayableAsset: {fileID: 11400000, guid: 049446bdcf1208741a3214bf57ef9482, type: 2}
+  m_PlayableAsset: {fileID: 11400000, guid: fd1f24c734c808f46ab8defa2413eeae, type: 2}
   m_InitialState: 1
   m_WrapMode: 2
   m_DirectorUpdateMode: 1
@@ -2395,6 +2395,32 @@ PlayableDirector:
     value: {fileID: 777189487}
   - key: {fileID: 2190307703284291430, guid: 049446bdcf1208741a3214bf57ef9482, type: 2}
     value: {fileID: 348582232}
+  - key: {fileID: 3902083177790955714, guid: fd1f24c734c808f46ab8defa2413eeae, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 8209444558200593268, guid: fd1f24c734c808f46ab8defa2413eeae, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 6933591144714773379, guid: fd1f24c734c808f46ab8defa2413eeae, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 4560729667617583512, guid: fd1f24c734c808f46ab8defa2413eeae, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: -5943182598016620079, guid: fd1f24c734c808f46ab8defa2413eeae, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 3933442921400631944, guid: fd1f24c734c808f46ab8defa2413eeae, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 5879807150719713627, guid: fd1f24c734c808f46ab8defa2413eeae, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 1068324594288063496, guid: fd1f24c734c808f46ab8defa2413eeae, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 5569494277549043923, guid: fd1f24c734c808f46ab8defa2413eeae, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 7069741826566859699, guid: fd1f24c734c808f46ab8defa2413eeae, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 8590548589668466724, guid: fd1f24c734c808f46ab8defa2413eeae, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 1498168162072817155, guid: fd1f24c734c808f46ab8defa2413eeae, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 2190307703284291430, guid: fd1f24c734c808f46ab8defa2413eeae, type: 2}
+    value: {fileID: 0}
   m_ExposedReferences:
     m_References:
     - 187ef000f0c6fea4c9ef89bda552ad97: {fileID: 1880528564}
