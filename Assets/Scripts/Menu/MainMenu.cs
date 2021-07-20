@@ -10,7 +10,9 @@ public class MainMenu : MonoBehaviour
     public GameObject mainMenu;
     public GameObject options;
 
-
+    private bool useContinueButton = true;
+    public TMP_Text continueText;
+    public Button continueButton;
     private bool inOptions = false;
     public List<GameObject> buttonPins;
     public List<TMP_Text> buttonText;
@@ -34,6 +36,19 @@ public class MainMenu : MonoBehaviour
     public float textSize_big;
     
     private void Start(){
+        
+        if(SaveSystem.LoadPlayer() == null) {
+            useContinueButton = false;
+            continueText.color = new Color(70f, 70f, 70f, 255);
+            continueButton.interactable = false;
+        }
+        else {
+            useContinueButton = true;
+            continueText.color = new Color(255f, 255f, 255f, 255f);
+            continueButton.interactable = true;
+        }
+
+
         if(SaveSystem.LoadOptions() == null) SaveSystem.SaveOptions(1f, 1f);
     }
     private void Update()
@@ -51,7 +66,7 @@ public class MainMenu : MonoBehaviour
         if(Input.GetButtonDown("Submit") && !inOptions){
             switch(currentButton){
                 case 0:
-                Continue();
+                if(useContinueButton) Continue();
                 break;
                 case 1:
                 NewGame();

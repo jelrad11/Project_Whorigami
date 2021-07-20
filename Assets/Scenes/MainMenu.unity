@@ -834,6 +834,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainMenu: {fileID: 1415963614}
   options: {fileID: 667320655}
+  continueText: {fileID: 769620236}
+  continueButton: {fileID: 355720087}
   buttonPins:
   - {fileID: 1365612713}
   - {fileID: 166453220}
