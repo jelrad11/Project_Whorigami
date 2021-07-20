@@ -2855,6 +2855,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Storytelling System
       objectReference: {fileID: 0}
+    - target: {fileID: 8159167196058160121, guid: c3b1103e3fe2e704499cae2e255ea660, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c3b1103e3fe2e704499cae2e255ea660, type: 3}
 --- !u!1 &1368514013
