@@ -141,7 +141,12 @@ public class MenuScript : MonoBehaviour
     }
 
     public void pauseMenuTrigger(){
+        if(pauseMenuActive) {
+            SaveSystem.SaveOptions(sideButtonPins[0].GetComponent<Slider>().value, sideButtonPins[1].GetComponent<Slider>().value);
+            applySettings();
+        }
         pauseMenuActive = !pauseMenuActive;
+        
         pauseMenu.SetActive(pauseMenuActive);
     }
     public void hoverButton(int button){ //0 = Save; 1 = Resume; 2 = Restart Level; 3 = Exit; 4 = Subtitles; 5 = Music

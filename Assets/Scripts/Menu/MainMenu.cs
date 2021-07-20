@@ -36,7 +36,7 @@ public class MainMenu : MonoBehaviour
     public float textSize_big;
     
     private void Start(){
-        SaveSystem.Deletesave();
+        
         if(SaveSystem.LoadPlayer() == null) {
             useContinueButton = false;
             grayText.SetActive(true);
