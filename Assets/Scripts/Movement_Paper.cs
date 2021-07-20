@@ -203,9 +203,9 @@ public class Movement_Paper : MonoBehaviour
 
                 transfCooldown = 1f;
 
-                // audioSource.clip = roll_up;
-                // audioSource.pitch = Random.Range(0.8f, 1.2f);
-                // audioSource.Play();
+                audioSource.clip = roll_up;
+                audioSource.pitch = Random.Range(0.8f, 1.2f);
+                audioSource.Play();
             }
             else if ((transform_left || transform_right) && transfCooldown <= 0f)
             {
@@ -223,9 +223,9 @@ public class Movement_Paper : MonoBehaviour
 
                 transfCooldown = 1f;
 
-                // audioSource.clip = roll_up;
-                // audioSource.pitch = Random.Range(0.8f, 1.2f);
-                // audioSource.Play();
+                audioSource.clip = roll_up;
+                audioSource.pitch = Random.Range(0.8f, 1.2f);
+                audioSource.Play();
             }
         }
         else
@@ -259,9 +259,9 @@ public class Movement_Paper : MonoBehaviour
 
                 transfCooldown = 1f;
 
-                // audioSource.clip = roll_down;
-                // audioSource.pitch = Random.Range(0.8f, 1.2f);
-                // audioSource.Play();
+                audioSource.clip = roll_down;
+                audioSource.pitch = Random.Range(0.8f, 1.2f);
+                audioSource.Play();
 
                 if(canFly) Jump();
             }
