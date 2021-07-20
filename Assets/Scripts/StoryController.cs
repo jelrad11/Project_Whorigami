@@ -81,20 +81,24 @@ public class StoryController : MonoBehaviour
         /*19*/ storyLines.Add("As she flew, Dinaa could not help but think that these flags might be a test... meant to see if she really could be a bird.");
         /*20*/ storyLines.Add("The next part was already in sight, through the tire swing and then the blue flags.");
         /*21*/ storyLines.Add("And then she was through. This was easy. Now she just had to climb back up into the air, proving that she, just like a bird, could defy gravity itself and then follow the next set of flags.");
-        /*22*/ storyLines.Add("So far, Dinaa felt like she was doing quite well. If things continued like this, then surely, she really would be able to become a bird. But was this really all that birds did? Following flags? " 
-                   + "There had to be more; with all this freedom, they could do anything.");
-        /*23*/ storyLines.Add("Alright, these flags led back through the tree again and into the purple flags.");
-        /*24*/ storyLines.Add("So far, Dinaa felt like she was doing quite well. If things continued like this, then surely, she really would be able to become a bird. " 
-                   + "But was this really all that birds did? Following flags? There had to be more, with all this freedom they could do anything.");
-        /*25*/ storyLines.Add("As she passed over the small treehouse that had contained her not too long ago, Dinaa smiled in triumph; what had seemed like a large world to her back then was but a fraction of the world she had now. " 
-                   + "And it was all because she had become a bird. Being a bird was truly the greatest.");
-        /*26*/ storyLines.Add("And perhaps soon, her world would expand once again when she left this tree behind and set out to conquer the skies. Dinaa could hardly wait for that moment.");
-        /*27*/ storyLines.Add("She could see them now, the last flags, the green ones, winding up into the canopy. This was the final test. If she managed to break through, break free, then she would prove herself a true bird.");
 
+        /*22*/ storyLines.Add("So far, Dinaa felt like she was doing quite well. If things continued like this, then surely, she really would be able to become a bird. " 
+                   + "But was this really all that birds did? Following flags? There had to be more, with all this freedom they could do anything.");
+        /*23*/ storyLines.Add("As she passed over the small treehouse that had contained her not too long ago, Dinaa smiled in triumph; what had seemed like a large world to her back then was but a fraction of the world she had now. " 
+                   + "And it was all because she had become a bird. Being a bird was truly the greatest.");
+        /*24*/ storyLines.Add("And perhaps soon, her world would expand once again when she left this tree behind and set out to conquer the skies. Dinaa could hardly wait for that moment.");
+        /*25*/ storyLines.Add("She could see them now, the last flags, the green ones, winding up into the canopy. This was the final test. If she managed to break through, break free, then she would prove herself a true bird.");
+
+        // Too lazy to reassign all the values in the inspector so we just get some placeholders here
+        /*26*/
+        storyLines.Add("placeholder");
+        /*27*/
+        storyLines.Add("Placeholder");
 
 
         // The following are storylines that play if the player decided not to follow the flag, centred more around free exploration of the tree the three below are play when the player first strays from the flags at any point
-        /*28*/ storyLines.Add("But… why should she follow the flags? She was free, wasn't she? She could fly wherever she wanted? So Dinaa decided to explore the tree on her own terms.");
+        /*28*/
+        storyLines.Add("But… why should she follow the flags? She was free, wasn't she? She could fly wherever she wanted? So Dinaa decided to explore the tree on her own terms.");
         /*29*/ storyLines.Add("These flags didn't seem to be revealing any great wisdom to her, so Dinaa decided to explore the tree on her own terms.");
         /*30*/ storyLines.Add("Actually, screw these flags! Dinaa could go wherever she wanted. Who cared if they were some sort of test?");
 
