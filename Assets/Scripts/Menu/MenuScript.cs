@@ -21,7 +21,7 @@ public class MenuScript : MonoBehaviour
     public float sliderValueChange = 0.1f;
     public float slCD = 0.2f;
     private float sliderCooldown = 0.2f;
-    private bool pauseMenuActive = true;
+    private bool pauseMenuActive = false;
 
     public Movement_Paper movement_Paper;
     public Movement_Bird_G movement_Bird_G;
@@ -70,6 +70,7 @@ public class MenuScript : MonoBehaviour
                 break;
             }
         }
+        Debug.Log(pauseMenuActive);
     }
 
     private void applySettings(){

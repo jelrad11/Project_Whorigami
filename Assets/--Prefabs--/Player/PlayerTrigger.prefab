@@ -43,7 +43,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 0.9716981, g: 0.8615344, b: 0.73794055, a: 1}
-  m_Intensity: 0.01
+  m_Intensity: 0.004
   m_Range: 0.96
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -104,6 +104,7 @@ GameObject:
   - component: {fileID: 1657785192580949404}
   - component: {fileID: 1747171501}
   - component: {fileID: 1747171502}
+  - component: {fileID: 4167738542832488135}
   m_Layer: 0
   m_Name: PlayerTrigger
   m_TagString: Untagged
@@ -153,6 +154,41 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   storyPoint: 1
+  delayActivation: []
+  timeDelay: 0
+  nextTrigger: []
+  deactiveThisTrigger: 0
+  specialTrigger: []
+  saveLocation: {x: 0, y: 0, z: 0}
+  saveRotation: {x: 0, y: 0, z: 0}
+  gameStage: 0
+  cameraState: 
+  addAbilityTimer: 0
+  addCanTransformLong: 0
+  addCanTransformShort: 0
+  addCanFly: 0
+  addCanTurn: 0
+  useMovementPaper: 0
+  movement_Paper: {fileID: 0}
+--- !u!95 &4167738542832488135
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1657785192580949405}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 773770144e1d0024ca9ecdda1f52f9a7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &1657785192130494871
 PrefabInstance:
   m_ObjectHideFlags: 0
