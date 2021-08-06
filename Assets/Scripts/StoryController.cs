@@ -38,7 +38,7 @@ public class StoryController : MonoBehaviour
     public void applySettings(){
         OptionData optData = SaveSystem.LoadOptions();
         if(optData != null) {
-            subtitleBox.fontSize = 25f + (10 * optData.subtitles);
+            subtitleBox.fontSize = 15f + (10 * optData.subtitles);
             audioSource.volume = optData.audio;
         }
 
